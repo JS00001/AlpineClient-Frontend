@@ -15,6 +15,16 @@ const Background: React.FC = () => {
         <div className="absolute top-[402px] left-0 z-10 h-[418px] w-[418px] rounded-tr-[100%] bg-main"></div>
         <div className="absolute top-[400px] left-0 h-[420px] w-[420px] rounded-tr-[100%] bg-gradient-to-br from-tangerine to-strawberry opacity-20"></div>
       </div>
+
+      <div>
+        <div className="absolute top-[1602px] left-0 z-10 h-[546px] w-[698px] rounded-r-[90px] bg-main" />
+        <div className="absolute top-[1600px] left-0  h-[550px] w-[700px] rounded-r-[90px] bg-gradient-to-br from-lime to-lemon opacity-20" />
+      </div>
+
+      <div>
+        <div className="absolute top-[2252px] right-0 z-10 h-[598px] w-[598px] rounded-tl-[100%] bg-main" />
+        <div className="absolute top-[2250px] right-0 h-[600px] w-[600px] rounded-tl-[100%] bg-gradient-to-br from-tangerine to-strawberry opacity-20" />
+      </div>
     </div>
   )
 }
