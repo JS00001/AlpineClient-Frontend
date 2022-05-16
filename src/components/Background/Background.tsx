@@ -1,6 +1,6 @@
 const Background: React.FC = () => {
   return (
-    <div className="hidden md:flex">
+    <div className="hidden sm:flex">
       <div>
         <div className="absolute top-0 right-0 z-10 h-[254px] w-[410px] rounded-bl-[150px] bg-main " />
         <div className="absolute top-0 right-0 h-[256px] w-[412px] rounded-bl-[150px] bg-gradient-to-br from-lime to-lemon opacity-20 " />
@@ -17,8 +17,8 @@ const Background: React.FC = () => {
       </div>
 
       <div>
-        <div className="absolute top-[1602px] left-0 z-10 h-[546px] w-[698px] rounded-r-[90px] bg-main" />
-        <div className="absolute top-[1600px] left-0  h-[550px] w-[700px] rounded-r-[90px] bg-gradient-to-br from-lime to-lemon opacity-20" />
+        <div className="absolute top-[1602px] left-0 z-10 h-[546px] w-[598px] rounded-r-[90px] bg-main md:w-[698px]" />
+        <div className="absolute top-[1600px] left-0  h-[550px] w-[600px] rounded-r-[90px] bg-gradient-to-br from-lime to-lemon opacity-20 md:w-[700px]" />
       </div>
 
       <div>

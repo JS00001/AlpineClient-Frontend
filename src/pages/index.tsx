@@ -35,10 +35,9 @@ const Home: NextPage = () => {
           </h2>
         </Container>
 
-        <Showcase />
-
-        <Container className="flex justify-center ">
-          <div className="h-[600px] w-full border-b-2 border-secondary-400 bg-main md:rounded-xl md:border-2"></div>
+        {/* Showcase */}
+        <Container>
+          <Showcase />
         </Container>
 
         {/* Features */}

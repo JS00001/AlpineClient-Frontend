@@ -43,20 +43,20 @@ const Content: IContent = {
   Showcase: [
     {
       title: 'Pvp',
-      image: '',
+      image: '/Image.png',
     },
     {
       title: 'Factions',
-      image: '',
+      image: '/Image-1.png',
     },
     {
       title: 'Cannoning',
-      image: '',
+      image: '/Image-2.png',
     },
 
     {
       title: 'Cosmetics',
-      image: '',
+      image: '/Image-3.png',
     },
   ],
   Features: [
