@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-400: #0071F2;
+  --primary-300: #3F98FD;
+  --primary-200: #8194A9;
+  --primary-100: #B8CDE4;
+
+  --secondary-400: #282B3A;
+  --secondary-300: #373B50;
+  --secondary-200: #55596B;
+  --secondary-100: #898FB0;
+
+  --tangerine: #FF9900;
+  --strawberry: #FF3737;
+  --lemon: #FAFF00;
+  --lime: #00FF66;
+  --fuscia: #FF00E5;
+
+  --main: #1D212D;
+}
+
+@layer components {
+  body {
+    background-color: var(--main);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  };
+
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary-400
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-secondary-300;
+  }
+}
