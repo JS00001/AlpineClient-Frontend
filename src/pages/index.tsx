@@ -4,14 +4,9 @@ import Container from '@/components/Container'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import {
-  RiSoundModuleLine,
-  RiGroupLine,
-  RiFoldersLine,
-  RiAppsLine,
-  RiAddLine,
-  RiSubtractLine,
-} from 'react-icons/ri'
+import Content from '@/content'
+import Faq from '@/components/Faq'
+import Feature from '@/components/Feature'
 
 const Home: NextPage = () => {
   return (
@@ -69,30 +64,9 @@ const Home: NextPage = () => {
           </h1>
 
           <div className="mt-20 grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            <div className="rounded-xl bg-secondary-400 px-7 pt-20 pb-7">
-              <RiSoundModuleLine className="text-primary-400" size={40} />
-              <h1 className="mt-10 text-5xl font-medium text-white">
-                Over 100 Mods
-              </h1>
-            </div>
-            <div className="rounded-xl bg-secondary-400 px-7 pt-20 pb-7">
-              <RiAppsLine className="text-primary-400" size={40} />
-              <h1 className="mt-10 text-5xl font-medium text-white">
-                Custom HUD
-              </h1>
-            </div>
-            <div className="rounded-xl bg-secondary-400 px-7 pt-20 pb-7">
-              <RiGroupLine className="text-primary-400" size={40} />
-              <h1 className="mt-10 text-5xl font-medium text-white">
-                Groups and Friends
-              </h1>
-            </div>
-            <div className="rounded-xl bg-secondary-400 px-7 pt-20 pb-7">
-              <RiFoldersLine className="text-primary-400" size={40} />
-              <h1 className="mt-10 text-5xl font-medium text-white">
-                5+ Mod Profiles
-              </h1>
-            </div>
+            {Content.Features.map((feature, index) => (
+              <Feature key={index} {...feature} />
+            ))}
           </div>
         </Container>
 
@@ -103,12 +77,9 @@ const Home: NextPage = () => {
           </h1>
 
           <div className="mt-20 w-full">
-            <div className="my-4 flex items-center justify-between rounded-2xl  bg-secondary-400 px-10 py-6">
-              <h2 className="text-xl text-white md:text-2xl lg:text-3xl">
-                Example Question
-              </h2>
-              <RiAddLine color="white" size={32} />
-            </div>
+            {Content.Faqs.map((faq, index) => (
+              <Faq key={index} {...faq} />
+            ))}
           </div>
         </Container>
       </main>
