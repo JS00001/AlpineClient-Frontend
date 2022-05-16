@@ -28,7 +28,7 @@ const Home: NextPage = () => {
         {/* Hero */}
         <Container className="my-32 flex flex-col items-center">
           <h1 className="text-[96px] font-extrabold text-white md:text-[164px] lg:text-[212px]">
-            Alpine
+            Smth else
           </h1>
           <h2 className="text-center uppercase text-gray-300 md:text-[18px] lg:text-[24px]">
             From the Original Developers of Crystal Client
