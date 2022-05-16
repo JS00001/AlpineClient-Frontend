@@ -7,7 +7,7 @@ const Background: React.FC = () => {
       </div>
 
       <div>
-        <div className="absolute top-[514px] right-0 z-10 h-[1026px] w-[498px] rounded-l-3xl bg-main" />
+        <div className="absolute top-[514px] right-0 z-10 h-[1024px] w-[498px] rounded-l-3xl bg-main" />
         <div className="absolute top-[512px] right-0 h-[1028px] w-[500px] rounded-l-3xl bg-gradient-to-r from-primary-400 to-fuscia opacity-20" />
       </div>
 
