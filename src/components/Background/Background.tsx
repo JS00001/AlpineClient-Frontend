@@ -12,8 +12,8 @@ const Background: React.FC = () => {
       </div>
 
       <div className="hidden lg:flex">
-        <div className="absolute top-[402px] left-0 z-10 h-[418px] w-[418px] rounded-tr-[100%] bg-main"></div>
-        <div className="absolute top-[400px] left-0 h-[420px] w-[420px] rounded-tr-[100%] bg-gradient-to-br from-tangerine to-strawberry opacity-20"></div>
+        <div className="absolute top-[402px] left-0 z-20 h-[418px] w-[418px] rounded-tr-[100%] bg-main"></div>
+        <div className="absolute top-[400px] left-0 z-10 h-[420px] w-[420px] rounded-tr-[100%] bg-gradient-to-br from-tangerine to-strawberry opacity-20"></div>
       </div>
 
       <div>
