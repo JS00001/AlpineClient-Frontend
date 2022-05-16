@@ -58,7 +58,7 @@ const Home: NextPage = () => {
         {/* Features */}
         <div className="container mx-auto my-32 flex flex-col items-center">
           <h2 className="text-2xl uppercase text-primary-400">Features</h2>
-          <h1 className="mt-10 w-1/2 text-center text-6xl font-semibold text-white">
+          <h1 className="mt-10 w-2/3 text-center text-6xl font-semibold text-white">
             Alpine ships with core features{' '}
             <span className=" bg-gradient-to-r from-primary-400 to-teal-300 bg-clip-text text-transparent">
               Free
