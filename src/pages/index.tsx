@@ -30,7 +30,7 @@ const Home: NextPage = () => {
           <div className="h-4 w-[600px] rounded-t-3xl bg-secondary-400 " />
           <div className="relative flex w-[700px] justify-center bg-secondary-400 pb-3 text-white">
             <p className="rounded-full bg-secondary-300 px-8 py-1 text-lg text-white">
-              Test
+              Test2
             </p>
             <p className="px-8 text-lg text-white">Test</p>
             <p className="px-8 text-lg text-white">Test</p>
