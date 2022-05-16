@@ -6,6 +6,10 @@ interface IContent {
     url: string
     text: string
   }[]
+  Showcase: {
+    title: string
+    image: string
+  }[]
   Features: {
     icon: IconType
     description: string
@@ -33,6 +37,26 @@ const Content: IContent = {
     {
       url: '/',
       text: 'Discord',
+    },
+  ],
+  // Up to FOUR showcase items, else will break
+  Showcase: [
+    {
+      title: 'Pvp',
+      image: '',
+    },
+    {
+      title: 'Factions',
+      image: '',
+    },
+    {
+      title: 'Cannoning',
+      image: '',
+    },
+
+    {
+      title: 'Cosmetics',
+      image: '',
     },
   ],
   Features: [

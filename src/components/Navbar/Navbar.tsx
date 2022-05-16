@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
             />
           </div>
           <div
-            className={`flex flex-col ${
+            className={`mt-5 flex flex-col ${
               collapsed && 'hidden'
             } md:flex md:flex-row `}
           >
