@@ -7,13 +7,13 @@ const Background: React.FC = () => {
       </div>
 
       <div>
-        <div className="absolute top-[514px] right-0 z-10 h-[1024px] w-[498px] rounded-l-3xl bg-main" />
-        <div className="absolute top-[512px] right-0 h-[1028px] w-[500px] rounded-l-3xl bg-gradient-to-r from-primary-400 to-fuscia opacity-20" />
+        <div className="absolute top-[554px] right-0 z-10 h-[1024px] w-[498px] rounded-l-3xl bg-main" />
+        <div className="absolute top-[552px] right-0 h-[1028px] w-[500px] rounded-l-3xl bg-gradient-to-r from-primary-400 to-fuscia opacity-20" />
       </div>
 
       <div className="hidden lg:flex">
-        <div className="absolute top-[402px] left-0 z-20 h-[418px] w-[518px] rounded-tr-[100%] bg-main"></div>
-        <div className="absolute top-[400px] left-0 z-10 h-[420px] w-[520px] rounded-tr-[100%] bg-gradient-to-br from-tangerine to-strawberry opacity-20"></div>
+        <div className="absolute top-[452px] left-0 z-20 h-[518px] w-[518px] rounded-tr-[100%] bg-main"></div>
+        <div className="absolute top-[450px] left-0 z-10 h-[520px] w-[520px] rounded-tr-[100%] bg-gradient-to-br from-tangerine to-strawberry opacity-20"></div>
       </div>
 
       <div>

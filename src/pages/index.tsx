@@ -1,13 +1,14 @@
-import Background from '@/components/Background'
-import Navbar from '@/components/Navbar'
-import Container from '@/components/Container'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
 import Content from '@/content'
 import Faq from '@/components/Faq'
+import Navbar from '@/components/Navbar'
+import Button from '@/components/Button'
 import Feature from '@/components/Feature'
 import Showcase from '@/components/Showcase'
+import Container from '@/components/Container'
+import Background from '@/components/Background'
 
 const Home: NextPage = () => {
   return (
@@ -33,6 +34,12 @@ const Home: NextPage = () => {
           <h2 className="text-center uppercase text-gray-300 md:text-[18px] lg:text-[24px]">
             From the Original Developers of Crystal Client
           </h2>
+          <div className="mt-10 flex gap-x-3">
+            <Button className="md:w-[250px]">Windows</Button>
+            <Button className="md:w-[250px]" color="secondary">
+              MacOS
+            </Button>
+          </div>
         </Container>
 
         {/* Showcase */}

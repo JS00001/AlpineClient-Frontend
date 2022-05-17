@@ -35,7 +35,7 @@ const Content: IContent = {
       text: 'Changelog',
     },
     {
-      url: '/',
+      url: 'https://discord.gg/crystalclient',
       text: 'Discord',
     },
   ],
