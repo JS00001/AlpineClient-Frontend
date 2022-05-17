@@ -21,17 +21,21 @@ const Changelog: NextPage = () => {
       </figure>
 
       <main className="relative z-50">
-        <Container className="my-32">
-          <h1 className="text-[128px] font-extrabold text-white">Changelog</h1>
+        <Container className="my-32 text-center md:text-left">
+          <h1 className="text-[64px] font-extrabold text-white md:text-[96px] lg:text-[128px]">
+            Changelog
+          </h1>
           <h2 className="mt-5 uppercase text-gray-300 md:text-[18px] lg:text-[24px]">
             View the Recent Changes to Alpine
           </h2>
         </Container>
 
-        <Container className="grid cursor-pointer grid-cols-12 gap-x-20">
-          <div className="col-span-5 h-96 rounded-xl bg-secondary-400" />
-          <div className="col-span-7">
-            <h1 className="text-2xl uppercase text-gray-300">May 26, 2021</h1>
+        <Container className="grid cursor-pointer gap-x-20 px-5 lg:grid-cols-2 xl:grid-cols-12">
+          <div className="h-96 rounded-xl bg-secondary-400 xl:col-span-5" />
+          <div className="xl:col-span-7">
+            <h1 className="mt-5 text-2xl uppercase text-gray-300">
+              May 26, 2021
+            </h1>
             <h1 className="my-5 text-5xl font-extrabold text-white">
               Version 1.0.2
             </h1>
@@ -43,7 +47,7 @@ const Changelog: NextPage = () => {
           </div>
         </Container>
 
-        <Container className="grid grid-cols-3 gap-x-10">
+        <Container className="grid gap-x-10 px-5 md:grid-cols-2 xl:grid-cols-3">
           <div>
             <div className=" my-10 h-72 rounded-xl bg-secondary-400" />
             <h1 className="text-2xl uppercase text-gray-300">May 26, 2021</h1>
