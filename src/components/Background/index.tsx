@@ -1,3 +1,7 @@
-import Background from './Background'
+import LandingBackground from './LandingBackground'
+import LoginBackground from './LoginBackground'
 
-export default Background
+export default {
+  LandingBackground,
+  LoginBackground,
+}

@@ -52,6 +52,20 @@
   }
 }
 
-.skeleton {
+@keyframes shimmer {
+  0% {
+    opacity: 10%;
+  }
+
+  100% {
+    opacity: 100%
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s linear infinite alternate;
+}
+
+.animate-skeleton {
   animation: skeleton-loading 1s linear infinite alternate;
 }

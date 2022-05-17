@@ -22,7 +22,7 @@ const Home: NextPage = () => {
       </nav>
 
       <figure>
-        <Background />
+        <Background.LandingBackground />
       </figure>
 
       <main className="relative z-50">
