@@ -30,7 +30,7 @@ const Changelog: NextPage = () => {
           </h2>
         </Container>
 
-        <Container className="grid cursor-pointer gap-x-20 px-5 lg:grid-cols-2 xl:grid-cols-12">
+        <Container className="grid cursor-pointer gap-x-20 px-5 hover:opacity-80 lg:grid-cols-2 xl:grid-cols-12">
           <div className="h-96 rounded-xl bg-secondary-400 xl:col-span-5" />
           <div className="xl:col-span-7">
             <h1 className="mt-5 text-2xl uppercase text-gray-300">
@@ -48,7 +48,7 @@ const Changelog: NextPage = () => {
         </Container>
 
         <Container className="grid gap-x-10 px-5 md:grid-cols-2 xl:grid-cols-3">
-          <div>
+          <div className="hover:opacity-80 ">
             <div className=" my-10 h-72 rounded-xl bg-secondary-400" />
             <h1 className="text-2xl uppercase text-gray-300">May 26, 2021</h1>
             <h1 className="my-5 text-5xl font-extrabold text-white">
@@ -60,7 +60,7 @@ const Changelog: NextPage = () => {
               ever since the 1500s.
             </p>
           </div>
-          <div>
+          <div className="hover:opacity-80 ">
             <div className=" my-10 h-72 rounded-xl bg-secondary-400" />
             <h1 className="text-2xl uppercase text-gray-300">May 26, 2021</h1>
             <h1 className="my-5 text-5xl font-extrabold text-white">
@@ -72,7 +72,7 @@ const Changelog: NextPage = () => {
               ever since the 1500s.
             </p>
           </div>
-          <div>
+          <div className="hover:opacity-80 ">
             <div className=" my-10 h-72 rounded-xl bg-secondary-400" />
             <h1 className="text-2xl uppercase text-gray-300">May 26, 2021</h1>
             <h1 className="my-5 text-5xl font-extrabold text-white">
