@@ -20,6 +20,7 @@ const Changelog: React.FC<ChangelogProps> = ({
 	const onTextChange = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
 		if (event.key == 'Enter') {
 			event.preventDefault();
+			if (value === '') return;
 			addChangelogItem(value, tagType);
 			setValue('');
 		}
