@@ -1,16 +1,14 @@
 import type { NextPage } from 'next';
-import type { AdminScreenState } from '@/redux/reducers/adminScreen';
-
-import { useSelector, useDispatch } from 'react-redux';
 import Head from 'next/head';
 
 import MockData from '@/content/mockchangelog.json';
 import Button from '@/components/Button';
 import Background from '@/components/Background';
 import AdminSidebar from '@/components/AdminSidebar';
+import useAdminScreen from '@/hooks/useAdminScreen';
 
 const Dashboard: NextPage = () => {
-	const adminScreen = useSelector((state: { adminScreen: AdminScreenState }) => state.adminScreen);
+	const [adminScreen] = useAdminScreen();
 
 	return (
 		<>
@@ -50,7 +48,7 @@ const Dashboard: NextPage = () => {
 					)}
 
 					{adminScreen == 'create' && (
-						<div className=''>
+						<div>
 							<h1 className=' my-3 text-6xl font-semibold text-white'>New Changelog</h1>
 							<Button className='mt-10 block' color='secondary' size='small'>
 								Select Image
