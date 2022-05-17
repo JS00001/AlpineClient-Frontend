@@ -41,3 +41,17 @@
     @apply rounded-full bg-secondary-300;
   }
 }
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--secondary-400);
+  }
+
+  100% {
+    background-color: var(--secondary-300);
+  }
+}
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}

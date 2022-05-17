@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Navbar from '@/components/Navbar'
 import Background from '@/components/Background'
 import Container from '@/components/Container'
+import Skeletons from '@/components/Skeletons'
 
 const Changelog: NextPage = () => {
   return (
@@ -29,6 +30,8 @@ const Changelog: NextPage = () => {
             View the Recent Changes to Alpine
           </h2>
         </Container>
+
+        {/* <Skeletons.ChangelogSkeleton /> */}
 
         <Container className="grid cursor-pointer gap-x-20 px-5 hover:opacity-80 lg:grid-cols-2 xl:grid-cols-12">
           <div className="h-96 rounded-xl bg-secondary-400 xl:col-span-5" />
