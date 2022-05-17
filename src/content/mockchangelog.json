@@ -60,6 +60,8 @@
 		"image": "/Image-1.png",
 		"added": [
 			"Added a new feature: The ability to change the color of the text.",
+			"Added a new feature: The ability to change the color of the buttons.",
+			"Added a new feature: The ability to change the color of the text.",
 			"Added a new feature: The ability to change the color of the buttons."
 		],
 		"removed": [
