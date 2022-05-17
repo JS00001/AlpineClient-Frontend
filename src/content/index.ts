@@ -31,7 +31,7 @@ const Content: IContent = {
       text: 'Store',
     },
     {
-      url: '/',
+      url: '/changelog',
       text: 'Changelog',
     },
     {
