@@ -1,16 +1,17 @@
+import type { TagProps } from '@/components/Tag/Tag';
 import type { NextPage } from 'next';
+
+import React from 'react';
 import Head from 'next/head';
 import { IoIosClose } from 'react-icons/io';
 
 import Tag from '@/components/Tag';
-import MockData from '@/content/mockchangelog.json';
+import Input from '@/components/Input';
 import Button from '@/components/Button';
+import MockData from '@/content/mockchangelog.json';
 import Background from '@/components/Background';
 import AdminSidebar from '@/components/AdminSidebar';
 import useAdminScreen from '@/hooks/useAdminScreen';
-import React from 'react';
-import type { TagProps } from '@/components/Tag/Tag';
-import Input from '@/components/Input';
 
 const Dashboard: NextPage = () => {
 	const [adminScreen] = useAdminScreen();
@@ -79,19 +80,19 @@ const Dashboard: NextPage = () => {
 								className='my-5 block w-96 rounded-md border border-secondary-300 bg-secondary-400 p-4 text-white focus:outline-none focus:ring-4 focus:ring-navy'
 							/>
 							<Input.Changelog
-								placeholder='Items Added'
+								placeholder='Items Added (Press enter after each item)'
 								tagType='success'
 								className='my-5'
 								addChangelogItem={addTag}
 							/>
 							<Input.Changelog
-								placeholder='Items Changed'
+								placeholder='Items Changed (Press enter after each item)'
 								tagType='warning'
 								className='my-5'
 								addChangelogItem={addTag}
 							/>
 							<Input.Changelog
-								placeholder='Items Removed'
+								placeholder='Items Removed (Press enter after each item)'
 								tagType='error'
 								className='my-5'
 								addChangelogItem={addTag}
