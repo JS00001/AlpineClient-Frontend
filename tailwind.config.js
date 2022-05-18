@@ -20,6 +20,7 @@ module.exports = {
           300: 'var(--secondary-300)',
           400: 'var(--secondary-400)',
         },
+        navy: 'var(--navy)',
         tangerine: 'var(--tangerine)',
         strawberry: 'var(--strawberry)',
         lemon: 'var(--lemon)',

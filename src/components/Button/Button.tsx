@@ -2,14 +2,14 @@ import React from 'react'
 
 const colorStyles = {
   primary:
-    'bg-primary-400 rounded-md text-white font-medium text-lg cursor-pointer hover:bg-primary-300',
+    'bg-primary-400 rounded-md text-white cursor-pointer hover:bg-primary-300',
   secondary:
-    'text-center bg-secondary-400 rounded-md text-white font-medium text-lg cursor-pointer hover:bg-secondary-300',
+    'text-center bg-secondary-400 rounded-md text-white cursor-pointer hover:bg-secondary-300',
 }
 
 const sizeStyles = {
-  small: 'py-4 px-5 sm:px-14',
-  large: 'py-5 px-10 sm:px-20',
+  small: 'py-4 px-5 sm:px-14 text-base',
+  large: 'py-5 px-10 sm:px-20 text-lg font-medium ',
 }
 
 const disabledStyles = {
