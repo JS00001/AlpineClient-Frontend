@@ -5,10 +5,18 @@ import useAdminScreen from '@/hooks/useAdminScreen';
 const AdminSidebar: React.FC = () => {
 	const [adminScreen, setAdminScreen] = useAdminScreen();
 
+	const onSignOut = () => {
+		window.localStorage.removeItem('token');
+		window.location.reload();
+	};
+
 	return (
 		<aside className='top-0 left-0 h-screen w-96 overflow-auto border-r border-secondary-400 p-10'>
 			<img src='/logo-admin.png' />
-			<Button size='small' className='my-10 w-full' onClick={() => setAdminScreen('create')}>
+			<Button size='small' className='mt-10 mb-4 w-full' color='secondary' onClick={onSignOut}>
+				Signout
+			</Button>
+			<Button size='small' className='mb-10 w-full' onClick={() => setAdminScreen('create')}>
 				New Changelog
 			</Button>
 

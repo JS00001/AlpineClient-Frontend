@@ -12,8 +12,12 @@ import MockData from '@/content/mockchangelog.json';
 import Background from '@/components/Background';
 import AdminSidebar from '@/components/AdminSidebar';
 import useAdminScreen from '@/hooks/useAdminScreen';
+import useAuth from '@/hooks/useAuth';
+import Router from 'next/router';
+import Loading from '@/components/Loading';
 
 const Dashboard: NextPage = () => {
+	const { isLoading, isAuth } = useAuth();
 	const [adminScreen] = useAdminScreen();
 
 	const [tags, setTags] = React.useState<{ item: string; tag: TagProps['type'] }[]>([]);
@@ -25,6 +29,16 @@ const Dashboard: NextPage = () => {
 	const removeTag = (index: number) => {
 		setTags(tags.filter((_, i) => i !== index));
 	};
+
+	React.useEffect(() => {
+		if (!isLoading) {
+			if (!isAuth) {
+				Router.push('/admin/login');
+			}
+		}
+	}, [isLoading, isAuth]);
+
+	if (isLoading || !isAuth) return <Loading />;
 
 	return (
 		<>
