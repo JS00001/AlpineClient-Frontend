@@ -23,4 +23,13 @@ export default {
 
 		return res.data;
 	},
+	addChangelog: async (changelog: Changelog) => {
+		const res = await axios.post(`${baseUrl}/changelog`, changelog, {
+			headers: {
+				Authorization: `${window.localStorage.getItem('token')}`,
+			},
+		});
+
+		return res.data;
+	},
 };

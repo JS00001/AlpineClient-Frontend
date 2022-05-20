@@ -80,6 +80,7 @@ const Dashboard: NextPage = () => {
 						</div>
 					)}
 
+					{/* Page to create changelog */}
 					{adminScreen == 'create' && (
 						<div>
 							<h1 className=' my-3 text-6xl font-semibold text-white'>New Changelog</h1>
