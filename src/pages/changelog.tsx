@@ -4,8 +4,8 @@ import Head from 'next/head';
 import Navbar from '@/components/Navbar';
 import Background from '@/components/Background';
 import Container from '@/components/Container';
-import useChangelogQuery from '@/hooks/useChangelogQuery';
 import Skeletons from '@/components/Skeletons';
+import useChangelogQuery from '@/hooks/useChangelogQuery';
 
 const Changelog: NextPage = () => {
 	const { isLoading, data } = useChangelogQuery();

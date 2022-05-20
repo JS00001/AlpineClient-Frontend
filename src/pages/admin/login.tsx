@@ -42,15 +42,15 @@ const LoginPage: NextPage = () => {
 
 				<main className='relative z-50'>
 					<Container className='mt-32 flex justify-center'>
-						<div className='flex w-full flex-col items-center rounded-lg bg-secondary-400 py-10 px-5 md:w-10/12 md:py-16 lg:w-3/5 xl:w-1/2'>
+						<div className='flex flex-col items-center rounded-lg py-10'>
 							{errorMessage && (
-								<div className='mb-5 w-3/4 rounded-md bg-red-500 py-2 text-center'>
+								<div className='mt-10 w-full rounded-md bg-red-500 py-2 text-center'>
 									<p className='text-white'>{errorMessage}</p>
 								</div>
 							)}
-							<h1 className='text-4xl font-semibold text-white lg:text-6xl'>Alpine Admin</h1>
+
 							<Link href='https://crystalapi.cloudstackup.com/login'>
-								<Button className='mt-10'>Login with Discord</Button>
+								<Button className='mt-5'>Login with Discord</Button>
 							</Link>
 						</div>
 					</Container>

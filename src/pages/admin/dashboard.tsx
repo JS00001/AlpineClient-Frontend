@@ -8,16 +8,19 @@ import { IoIosClose } from 'react-icons/io';
 import Tag from '@/components/Tag';
 import Input from '@/components/Input';
 import Button from '@/components/Button';
-import Background from '@/components/Background';
-import AdminSidebar from '@/components/AdminSidebar';
-import useAdminScreen from '@/hooks/useAdminScreen';
-import useAuth from '@/hooks/useAuth';
 import Loading from '@/components/Loading';
 import Redirect from '@/components/Redirect';
+import Background from '@/components/Background';
+import AdminSidebar from '@/components/AdminSidebar';
+
+import useAuth from '@/hooks/useAuth';
+import useAdminScreen from '@/hooks/useAdminScreen';
 import useChangelogQuery from '@/hooks/useChangelogQuery';
 
 const Dashboard: NextPage = () => {
 	const [adminScreen] = useAdminScreen();
+	const [image, setImage] = React.useState<string | null>(null);
+	const imageInput = React.useRef<HTMLInputElement>(null);
 	const { isLoading: isAuthLoading, isAuth } = useAuth();
 	const { isLoading: isChangelogLoading, data: changelog } = useChangelogQuery();
 
@@ -29,6 +32,12 @@ const Dashboard: NextPage = () => {
 
 	const removeTag = (index: number) => {
 		setTags(tags.filter((_, i) => i !== index));
+	};
+
+	const onImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (e.target.files && e.target.files.length) {
+			setImage(URL.createObjectURL(e.target.files[0]));
+		}
 	};
 
 	if (isAuthLoading) return <Loading />;
@@ -84,9 +93,27 @@ const Dashboard: NextPage = () => {
 					{adminScreen == 'create' && (
 						<div>
 							<h1 className=' my-3 text-6xl font-semibold text-white'>New Changelog</h1>
-							<Button className='mt-10 block' color='secondary' size='small'>
+							<input
+								type='file'
+								name='image'
+								ref={imageInput}
+								className='hidden'
+								accept='image/*'
+								onChange={onImageChange}
+							/>
+							<Button
+								className='mt-10 block'
+								color='secondary'
+								size='small'
+								onClick={() => imageInput.current?.click()}
+							>
 								Select Image
 							</Button>
+							{image && (
+								<div className='mt-5 max-w-[500px]'>
+									<img src={image} className='h-full w-full' />
+								</div>
+							)}
 							<input
 								placeholder='Version'
 								className='my-5 block w-96 rounded-md border border-secondary-300 bg-secondary-400 p-4 text-white focus:outline-none focus:ring-4 focus:ring-navy'
@@ -126,7 +153,7 @@ const Dashboard: NextPage = () => {
 								</div>
 							))}
 
-							<Button size='small' className=' w-[600px]'>
+							<Button size='small' className='mb-10 w-[600px]'>
 								Post Changelog
 							</Button>
 						</div>
