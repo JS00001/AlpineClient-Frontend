@@ -1,8 +1,11 @@
 import Button from '../Button';
-import MockData from '@/content/mockchangelog.json';
 import useAdminScreen from '@/hooks/useAdminScreen';
 
-const AdminSidebar: React.FC = () => {
+export interface AdminSidebarProps {
+	changelog: Changelog[];
+}
+
+const AdminSidebar: React.FC<AdminSidebarProps> = ({ changelog }) => {
 	const [adminScreen, setAdminScreen] = useAdminScreen();
 
 	const onSignOut = () => {
@@ -20,7 +23,7 @@ const AdminSidebar: React.FC = () => {
 				New Changelog
 			</Button>
 
-			{MockData.map((item, i) => (
+			{changelog.map((item, i) => (
 				<div
 					className={
 						'my-5 cursor-pointer rounded-lg p-4 hover:bg-secondary-400 ' +

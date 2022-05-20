@@ -15,6 +15,12 @@ export default {
 	login: async (code: string) => {
 		const res = await axios.get(`${baseUrl}/auth?code=${code}`);
 		window.localStorage.setItem('token', res.data.token);
+
+		return res.data;
+	},
+	changelogs: async () => {
+		const res = await axios.get(`${baseUrl}/changelog`);
+
 		return res.data;
 	},
 };
