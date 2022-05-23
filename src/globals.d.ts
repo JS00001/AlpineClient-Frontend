@@ -1,5 +1,5 @@
 interface Changelog {
-	date: string;
+	date?: string;
 	title: string;
 	image: string;
 	added?: string[];

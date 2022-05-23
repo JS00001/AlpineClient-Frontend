@@ -1,5 +1,6 @@
 import Button from '../Button';
 import useAdminScreen from '@/hooks/useAdminScreen';
+import { useEffect } from 'react';
 
 export interface AdminSidebarProps {
 	changelog: Changelog[];
