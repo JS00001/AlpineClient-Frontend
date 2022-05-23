@@ -12,7 +12,7 @@ import api from '@/api';
 const createChangelog: React.FC = () => {
 	const [error, setError] = React.useState<string | null>(null);
 	const [image, setImage] = React.useState<string | null>(null);
-	const [versionInput, setVersionInput] = React.useState<string>('');
+	const [titleInput, setTitleInput] = React.useState<string>('');
 	const [tags, setTags] = React.useState<{ item: string; tag: TagProps['type'] }[]>([]);
 
 	const imageInput = React.useRef<HTMLInputElement>(null);
@@ -34,14 +34,19 @@ const createChangelog: React.FC = () => {
 	const mutation = useMutation(api.addChangelog, {
 		onSuccess: () => {
 			setTags([]);
-			setVersionInput('');
+			setTitleInput('');
 			window.location.reload();
 		},
 	});
 
 	const onSubmit = async () => {
-		if (!versionInput) {
-			setError('Please enter a version number.');
+		if (!image) {
+			setError('Please add an image.');
+			return;
+		}
+
+		if (!titleInput) {
+			setError('Please enter a title.');
 			return;
 		}
 
@@ -54,7 +59,7 @@ const createChangelog: React.FC = () => {
 		let added = tags.filter(({ tag }) => tag === 'success').map(({ item }) => item);
 		let removed = tags.filter(({ tag }) => tag === 'error').map(({ item }) => item);
 		let changed = tags.filter(({ tag }) => tag === 'warning').map(({ item }) => item);
-		mutation.mutate({ title: versionInput, image: 'test', added, removed, changed });
+		mutation.mutate({ title: titleInput, image: 'test', added, removed, changed });
 	};
 
 	return (
@@ -87,9 +92,9 @@ const createChangelog: React.FC = () => {
 				</div>
 			)}
 			<input
-				value={versionInput}
-				placeholder='Version'
-				onChange={(e) => setVersionInput(e.target.value)}
+				value={titleInput}
+				placeholder='Title'
+				onChange={(e) => setTitleInput(e.target.value)}
 				className='my-5 block w-96 rounded-md border border-secondary-300 bg-secondary-400 p-4 text-white focus:outline-none focus:ring-4 focus:ring-navy'
 			/>
 			<Input.Changelog
