@@ -1,4 +1,5 @@
 import { useQuery } from 'react-query';
+
 import api from '@/api';
 
 const useAuth = (): { isLoading: boolean; isAuth: boolean } => {
