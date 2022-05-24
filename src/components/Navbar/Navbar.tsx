@@ -7,7 +7,7 @@ import Content from '@/content';
 const Navbar: React.FC = () => {
 	const [collapsed, setCollapsed] = React.useState(true);
 
-	const toggleCollapsed = () => {
+	const onToggleCollapsed = () => {
 		setCollapsed(!collapsed);
 	};
 
@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
 						<Link href='/'>
 							<img src='/logo.png' className='cursor-pointer' />
 						</Link>
-						<RiMenuFill color='#fff' size={32} className='md:hidden' onClick={toggleCollapsed} />
+						<RiMenuFill color='#fff' size={32} className='md:hidden' onClick={onToggleCollapsed} />
 					</div>
 					<div className={`mt-5 flex flex-col ${collapsed && 'hidden'} md:flex md:flex-row `}>
 						{Content.NavItems.map((item, index) => {

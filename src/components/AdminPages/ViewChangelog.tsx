@@ -27,7 +27,7 @@ const ViewChangelog: React.FC<ViewChangelogProps> = ({ changelog }) => {
 		<div>
 			<h2 className='text-xl font-medium uppercase text-gray-300'>{changelog.date}</h2>
 			<h1 className=' my-3 text-6xl font-semibold text-white'>{changelog.title}</h1>
-			<div className='w-[550px]'>
+			<div className='max-w-[550px]'>
 				<Image src={changelog.image} />
 			</div>
 

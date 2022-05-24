@@ -32,7 +32,7 @@ const Changelog: React.FC<ChangelogProps> = ({
 			onChange={(e) => setValue(e.target.value)}
 			placeholder={placeholder}
 			className={
-				'block w-[600px] rounded-md border border-secondary-300 bg-secondary-400 p-4 text-white focus:outline-none focus:ring-4 focus:ring-navy ' +
+				'block w-full rounded-md border border-secondary-300 bg-secondary-400 p-4 text-white focus:outline-none focus:ring-4 focus:ring-navy lg:w-[600px] ' +
 				className
 			}
 		/>

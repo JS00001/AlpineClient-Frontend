@@ -99,7 +99,7 @@ const createChangelog: React.FC = () => {
 				value={titleInput}
 				placeholder='Title'
 				onChange={(e) => setTitleInput(e.target.value)}
-				className='my-5 block w-96 rounded-md border border-secondary-300 bg-secondary-400 p-4 text-white focus:outline-none focus:ring-4 focus:ring-navy'
+				className='my-5 block w-full rounded-md border border-secondary-300 bg-secondary-400 p-4 text-white focus:outline-none focus:ring-4 focus:ring-navy lg:w-96'
 			/>
 			<Input.Changelog
 				placeholder='Items Added (Press enter after each item)'
@@ -121,7 +121,7 @@ const createChangelog: React.FC = () => {
 			/>
 
 			{tags.map((tag, i) => (
-				<div className='my-2 w-[600px] rounded-md border border-secondary-300'>
+				<div className='my-2 w-full rounded-md border border-secondary-300 lg:w-[600px]'>
 					<div className='flex items-center justify-between bg-secondary-400 p-2'>
 						<Tag type={tag.tag}>
 							<p className='text-gray-300'>{tag.item}</p>
@@ -136,7 +136,7 @@ const createChangelog: React.FC = () => {
 				</div>
 			))}
 
-			<Button size='small' className='mb-10 w-[600px]' onClick={onSubmit}>
+			<Button size='small' className='mb-10 w-full lg:w-[600px]' onClick={onSubmit}>
 				Post Changelog
 			</Button>
 		</div>

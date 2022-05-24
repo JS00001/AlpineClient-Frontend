@@ -30,7 +30,7 @@ const Dashboard: NextPage = () => {
 				<title>Crystal Client - Admin</title>
 			</Head>
 
-			<nav className='fixed z-[60]'>
+			<nav className='relative z-[60] lg:fixed'>
 				<AdminSidebar changelog={changelog} />
 			</nav>
 
@@ -39,7 +39,7 @@ const Dashboard: NextPage = () => {
 			</figure>
 
 			<main className='relative z-50'>
-				<div className='ml-96 px-14 pt-28 '>
+				<div className='px-5 pt-10 lg:ml-96 lg:px-14 lg:pt-28 '>
 					{adminScreen === 'image' && <AdminPages.ImageUpload />}
 					{adminScreen === 'create' && <AdminPages.CreateChangelog />}
 					{typeof adminScreen === 'number' && (
