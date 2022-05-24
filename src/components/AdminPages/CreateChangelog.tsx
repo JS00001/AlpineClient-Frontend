@@ -86,7 +86,7 @@ const createChangelog: React.FC = () => {
 				Select Image
 			</Button>
 			{error && (
-				<div className='my-5 w-96 rounded-md bg-red-500 py-2 text-center'>
+				<div className='my-5 w-full rounded-md bg-red-500 py-2 text-center lg:w-96'>
 					<p className='text-white'>{error}</p>
 				</div>
 			)}
