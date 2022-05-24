@@ -17,9 +17,10 @@ const createChangelog: React.FC = () => {
 
 	const imageInput = React.useRef<HTMLInputElement>(null);
 
-	const onImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const onImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (e.target.files && e.target.files.length) {
-			setImage(URL.createObjectURL(e.target.files[0]));
+			const url = await api.upload(e.target.files[0]);
+			setImage(url);
 		}
 	};
 
@@ -59,7 +60,7 @@ const createChangelog: React.FC = () => {
 		let added = tags.filter(({ tag }) => tag === 'success').map(({ item }) => item);
 		let removed = tags.filter(({ tag }) => tag === 'error').map(({ item }) => item);
 		let changed = tags.filter(({ tag }) => tag === 'warning').map(({ item }) => item);
-		mutation.mutate({ title: titleInput, image: 'test', added, removed, changed });
+		mutation.mutate({ title: titleInput, image, added, removed, changed });
 	};
 
 	return (
@@ -88,7 +89,7 @@ const createChangelog: React.FC = () => {
 			)}
 			{image && (
 				<div className='mt-5 max-w-[500px]'>
-					<img src={image} className='h-full w-full' />
+					<img crossOrigin='anonymous' src={image} className='h-full w-full' />
 				</div>
 			)}
 			<input

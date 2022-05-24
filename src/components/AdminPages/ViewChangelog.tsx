@@ -10,7 +10,7 @@ const ViewChangelog: React.FC<ViewChangelogProps> = ({ changelog }) => {
 			<h2 className='text-xl font-medium uppercase text-gray-300'>{changelog.date}</h2>
 			<h1 className=' my-3 text-6xl font-semibold text-white'>{changelog.title}</h1>
 			<div className='w-[550px]'>
-				<img src={changelog.image} className='h-full w-full' />
+				<img crossOrigin='anonymous' src={changelog.image} className='h-full w-full' />
 			</div>
 
 			<div className='flex flex-col gap-y-4 py-10 text-2xl text-gray-300'>

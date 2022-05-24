@@ -32,4 +32,16 @@ export default {
 
 		return res.data;
 	},
+	upload: async (image: File) => {
+		const formData = new FormData();
+		formData.append('image', image);
+		const res = await axios.post(`${baseUrl}/upload`, formData, {
+			headers: {
+				Authorization: `${window.localStorage.getItem('token')}`,
+				'Content-Type': 'multipart/form-data',
+			},
+		});
+
+		return res.data;
+	},
 };

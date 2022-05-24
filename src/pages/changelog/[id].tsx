@@ -39,6 +39,9 @@ const Changelog: React.FC = () => {
 					<h1 className='text-[64px] font-extrabold text-white md:text-[96px] lg:text-[128px]'>
 						{title}
 					</h1>
+					<div className='mt-5 max-w-[800px]'>
+						<img crossOrigin='anonymous' src={image} className='h-full w-full' />
+					</div>
 				</Container>
 
 				<Container>
