@@ -37,11 +37,11 @@ interface NavItemProps {
 }
 const NavItem: React.FC<NavItemProps> = ({ text, url }) => {
 	return (
-		<div className='cursor-pointer rounded-full px-6 py-3 hover:bg-secondary-300'>
-			<a className='text-xl uppercase text-white' href={url}>
-				{text}
-			</a>
-		</div>
+		<Link href={url}>
+			<div className='cursor-pointer rounded-full px-6 py-3 hover:bg-secondary-300'>
+				<p className='text-xl uppercase text-white'>{text}</p>
+			</div>
+		</Link>
 	);
 };
 
