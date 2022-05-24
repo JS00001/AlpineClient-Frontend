@@ -40,10 +40,11 @@ const Dashboard: NextPage = () => {
 
 			<main className='relative z-50'>
 				<div className='ml-96 px-14 pt-28 '>
-					{adminScreen !== 'create' && (
+					{adminScreen === 'image' && <AdminPages.ImageUpload />}
+					{adminScreen === 'create' && <AdminPages.CreateChangelog />}
+					{typeof adminScreen === 'number' && (
 						<AdminPages.ViewChangelog changelog={changelog[adminScreen]} />
 					)}
-					{adminScreen == 'create' && <AdminPages.CreateChangelog />}
 				</div>
 			</main>
 		</>

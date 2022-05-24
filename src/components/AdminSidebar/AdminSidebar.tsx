@@ -20,8 +20,11 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ changelog }) => {
 			<Button size='small' className='mt-10 mb-4 w-full' color='secondary' onClick={onSignOut}>
 				Signout
 			</Button>
-			<Button size='small' className='mb-10 w-full' onClick={() => setAdminScreen('create')}>
+			<Button size='small' className=' mb-4 w-full' onClick={() => setAdminScreen('create')}>
 				New Changelog
+			</Button>
+			<Button size='small' className='mb-10 w-full' onClick={() => setAdminScreen('image')}>
+				Image Uploader
 			</Button>
 
 			{changelog.map((item, i) => (

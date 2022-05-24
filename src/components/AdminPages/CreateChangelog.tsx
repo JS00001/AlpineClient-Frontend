@@ -4,6 +4,7 @@ import React from 'react';
 import { useMutation } from 'react-query';
 import { IoIosClose } from 'react-icons/io';
 
+import useImageUpload from '@/hooks/useImageUpload';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import Tag from '@/components/Tag';
@@ -13,23 +14,8 @@ const createChangelog: React.FC = () => {
 	const [error, setError] = React.useState<string | null>(null);
 
 	// Image uploading mutation, state, and ref
-	const [image, setImage] = React.useState<string | null>(null);
+	const [image, onImageChange] = useImageUpload();
 	const imageInput = React.useRef<HTMLInputElement>(null);
-
-	const imageUploadMutation = useMutation(api.upload, {
-		onSuccess: (data) => {
-			setImage(data);
-		},
-		onError: () => {
-			window.location.reload();
-		},
-	});
-
-	const onImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (e.target.files && e.target.files.length) {
-			imageUploadMutation.mutate(e.target.files[0]);
-		}
-	};
 
 	// Tag adding, removing, and state
 	const [tags, setTags] = React.useState<{ item: string; tag: TagProps['type'] }[]>([]);

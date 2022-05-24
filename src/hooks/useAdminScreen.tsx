@@ -2,11 +2,11 @@ import type { AdminScreenState } from '@/redux/reducers/adminScreen';
 import { useDispatch, useSelector } from 'react-redux';
 import setAdminScreen from '@/redux/actions/adminScreen';
 
-const useAdminScreen = (): [AdminScreenState, (i: number | 'create') => void] => {
+const useAdminScreen = (): [AdminScreenState, (i: AdminScreenState) => void] => {
 	const dispatch = useDispatch();
 	const adminScreen = useSelector((state: { adminScreen: AdminScreenState }) => state.adminScreen);
 
-	const updateAdminScreen = (i: number | 'create'): void => {
+	const updateAdminScreen = (i: AdminScreenState): void => {
 		dispatch(setAdminScreen(i));
 	};
 

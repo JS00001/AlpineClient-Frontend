@@ -16,8 +16,8 @@ const disabledStyles = {
 	primary:
 		'cursor-not-allowed rounded-md text-primary-100 border-2 border-primary-100 bg-primary-200',
 	secondary:
-		'cursor-not-allowed rounded-md text-secondary-100 border-2 border-secondary-100 bg-secondary-200',
-	error: 'cursor-not-allowed rounded-md text-red-100 border-2 border-red-100 bg-red-200',
+		'cursor-not-allowed rounded-md text-secondary-100 border-2 border-secondary-100 bg-secondary-300',
+	error: 'cursor-not-allowed rounded-md text-red-300 border-2 border-red-300 bg-red-200',
 };
 
 export type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
