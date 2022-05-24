@@ -1,8 +1,8 @@
 import React from 'react';
-import { useMutation } from 'react-query';
 
-import api from '@/api';
-import Button from '../Button';
+import Image from '@/components/Image';
+import Button from '@/components/Button';
+
 import useImageUpload from '@/hooks/useImageUpload';
 import useCopyToClipboard from '@/hooks/useCopyToClipboard';
 
@@ -36,7 +36,7 @@ const ImageUpload: React.FC = () => {
 							{image}
 						</h2>
 					</div>
-					<img crossOrigin='anonymous' src={image} className='h-full w-full' />
+					<Image src={image} />
 				</div>
 			)}
 		</div>

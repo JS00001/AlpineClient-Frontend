@@ -1,7 +1,8 @@
-import Content from '@/content';
-import Link from 'next/link';
 import React from 'react';
+import Link from 'next/link';
 import { RiMenuFill } from 'react-icons/ri';
+
+import Content from '@/content';
 
 const Navbar: React.FC = () => {
 	const [collapsed, setCollapsed] = React.useState(true);

@@ -1,11 +1,14 @@
-import useChangelogQuery from '@/hooks/useChangelogQuery';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
-import Loading from '@/components/Loading';
+import { useRouter } from 'next/router';
+
+import Tag from '@/components/Tag';
 import Navbar from '@/components/Navbar';
+import Loading from '@/components/Loading';
 import Container from '@/components/Container';
 import Background from '@/components/Background';
-import Tag from '@/components/Tag';
+
+import useChangelogQuery from '@/hooks/useChangelogQuery';
+import Image from '@/components/Image';
 
 const Changelog: React.FC = () => {
 	const router = useRouter();
@@ -40,7 +43,7 @@ const Changelog: React.FC = () => {
 						{title}
 					</h1>
 					<div className='mt-5 max-w-[800px]'>
-						<img crossOrigin='anonymous' src={image} className='h-full w-full' />
+						<Image src={image} />
 					</div>
 				</Container>
 

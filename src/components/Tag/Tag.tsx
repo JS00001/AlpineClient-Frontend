@@ -16,7 +16,7 @@ export interface TagProps {
 	type: keyof typeof typeStyles;
 }
 
-const Tag: React.FC<TagProps> = ({ type, children, ...props }) => {
+const Tag: React.FC<TagProps> = ({ type, children }) => {
 	return (
 		<div className='flex items-center'>
 			<div className={'mr-3 rounded-md p-1 text-base text-gray-300 ' + typeStyles[type]}>

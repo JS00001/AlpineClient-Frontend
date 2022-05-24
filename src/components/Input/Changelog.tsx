@@ -13,7 +13,6 @@ const Changelog: React.FC<ChangelogProps> = ({
 	className = '',
 	placeholder,
 	tagType,
-	...props
 }) => {
 	const [value, setValue] = React.useState('');
 

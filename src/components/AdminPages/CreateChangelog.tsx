@@ -7,6 +7,7 @@ import { IoIosClose } from 'react-icons/io';
 import useImageUpload from '@/hooks/useImageUpload';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
+import Image from '@/components/Image';
 import Tag from '@/components/Tag';
 import api from '@/api';
 
@@ -91,7 +92,7 @@ const createChangelog: React.FC = () => {
 			)}
 			{image && (
 				<div className='mt-5 max-w-[500px]'>
-					<img crossOrigin='anonymous' src={image} className='h-full w-full' />
+					<Image src={image} />
 				</div>
 			)}
 			<input
