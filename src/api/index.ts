@@ -1,10 +1,14 @@
 import axios from 'axios';
 
-const baseUrl = 'https://crystalapi.cloudstackup.com';
+const baseUrl =
+	process.env.NODE_ENV == 'development'
+		? 'http://localhost:3008'
+		: 'https://crystalapi.cloudstackup.com';
 
 export default {
+	baseUrl,
 	user: async () => {
-		const res = await axios.get('https://crystalapi.cloudstackup.com/me', {
+		const res = await axios.get(`${baseUrl}/me`, {
 			headers: {
 				Authorization: `${window.localStorage.getItem('token')}`,
 			},
@@ -25,6 +29,15 @@ export default {
 	},
 	addChangelog: async (changelog: Changelog) => {
 		const res = await axios.post(`${baseUrl}/changelog`, changelog, {
+			headers: {
+				Authorization: `${window.localStorage.getItem('token')}`,
+			},
+		});
+
+		return res.data;
+	},
+	deleteChangelog: async (id: string) => {
+		const res = await axios.delete(`${baseUrl}/changelog?id=${id}`, {
 			headers: {
 				Authorization: `${window.localStorage.getItem('token')}`,
 			},

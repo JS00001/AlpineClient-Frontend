@@ -11,18 +11,28 @@ import api from '@/api';
 
 const createChangelog: React.FC = () => {
 	const [error, setError] = React.useState<string | null>(null);
-	const [image, setImage] = React.useState<string | null>(null);
-	const [titleInput, setTitleInput] = React.useState<string>('');
-	const [tags, setTags] = React.useState<{ item: string; tag: TagProps['type'] }[]>([]);
 
+	// Image uploading mutation, state, and ref
+	const [image, setImage] = React.useState<string | null>(null);
 	const imageInput = React.useRef<HTMLInputElement>(null);
+
+	const imageUploadMutation = useMutation(api.upload, {
+		onSuccess: (data) => {
+			setImage(data);
+		},
+		onError: () => {
+			window.location.reload();
+		},
+	});
 
 	const onImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (e.target.files && e.target.files.length) {
-			const url = await api.upload(e.target.files[0]);
-			setImage(url);
+			imageUploadMutation.mutate(e.target.files[0]);
 		}
 	};
+
+	// Tag adding, removing, and state
+	const [tags, setTags] = React.useState<{ item: string; tag: TagProps['type'] }[]>([]);
 
 	const addTag = (item: string, tag: TagProps['type']) => {
 		setTags([...tags, { item, tag }]);
@@ -32,15 +42,21 @@ const createChangelog: React.FC = () => {
 		setTags(tags.filter((_, i) => i !== index));
 	};
 
-	const mutation = useMutation(api.addChangelog, {
+	// Changelog creation inputs, mutation, and submission
+	const [titleInput, setTitleInput] = React.useState<string>('');
+
+	const changelogCreateMutation = useMutation(api.addChangelog, {
 		onSuccess: () => {
 			setTags([]);
 			setTitleInput('');
 			window.location.reload();
 		},
+		onError: () => {
+			window.location.reload();
+		},
 	});
 
-	const onSubmit = async () => {
+	const onSubmit = () => {
 		if (!image) {
 			setError('Please add an image.');
 			return;
@@ -60,7 +76,7 @@ const createChangelog: React.FC = () => {
 		let added = tags.filter(({ tag }) => tag === 'success').map(({ item }) => item);
 		let removed = tags.filter(({ tag }) => tag === 'error').map(({ item }) => item);
 		let changed = tags.filter(({ tag }) => tag === 'warning').map(({ item }) => item);
-		mutation.mutate({ title: titleInput, image, added, removed, changed });
+		changelogCreateMutation.mutate({ title: titleInput, image, added, removed, changed });
 	};
 
 	return (

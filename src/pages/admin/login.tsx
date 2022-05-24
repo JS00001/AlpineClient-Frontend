@@ -49,7 +49,7 @@ const LoginPage: NextPage = () => {
 								</div>
 							)}
 
-							<Link href='https://crystalapi.cloudstackup.com/login'>
+							<Link href={api.baseUrl + '/login'}>
 								<Button className='mt-5'>Login with Discord</Button>
 							</Link>
 						</div>

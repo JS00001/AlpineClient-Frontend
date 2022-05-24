@@ -2,6 +2,8 @@ import { useQuery } from 'react-query';
 import api from '@/api';
 
 const useAuth = (): { isLoading: boolean; isAuth: boolean } => {
+	const { data: user, isLoading, isError } = useQuery('user', api.user);
+
 	if (typeof window === 'undefined') {
 		return { isLoading: false, isAuth: false };
 	}
@@ -10,9 +12,11 @@ const useAuth = (): { isLoading: boolean; isAuth: boolean } => {
 		return { isLoading: false, isAuth: false };
 	}
 
-	const { data: user, isLoading } = useQuery('user', api.user);
-
 	if (!user) {
+		return { isLoading, isAuth: false };
+	}
+
+	if (isError) {
 		return { isLoading, isAuth: false };
 	}
 

@@ -1,4 +1,5 @@
 interface Changelog {
+	_id?: string;
 	date?: string;
 	title: string;
 	image: string;

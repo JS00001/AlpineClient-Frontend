@@ -1,10 +1,27 @@
+import { useMutation } from 'react-query';
+
+import api from '@/api';
 import Tag from '@/components/Tag';
+import Button from '@/components/Button';
 
 export interface ViewChangelogProps {
 	changelog: Changelog;
 }
 
 const ViewChangelog: React.FC<ViewChangelogProps> = ({ changelog }) => {
+	const changelogDeleteMutation = useMutation(api.deleteChangelog, {
+		onSuccess: () => {
+			window.location.reload();
+		},
+		onError: () => {
+			window.location.reload();
+		},
+	});
+
+	const onDelete = async () => {
+		changelogDeleteMutation.mutate(changelog._id as string);
+	};
+
 	return (
 		<div>
 			<h2 className='text-xl font-medium uppercase text-gray-300'>{changelog.date}</h2>
@@ -24,6 +41,10 @@ const ViewChangelog: React.FC<ViewChangelogProps> = ({ changelog }) => {
 					<Tag type='warning'>{item}</Tag>
 				))}
 			</div>
+
+			<Button color='error' className='mb-10' onClick={onDelete}>
+				Delete Changelog
+			</Button>
 		</div>
 	);
 };
