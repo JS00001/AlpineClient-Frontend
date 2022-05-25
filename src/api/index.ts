@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const baseUrl =
 	process.env.NODE_ENV == 'development'
-		? 'http://localhost:3008'
-		: 'https://crystalapi.cloudstackup.com';
+		? 'http://localhost:3008/v2'
+		: 'https://crystalapi.cloudstackup.com/v1';
 
 export default {
 	baseUrl,
