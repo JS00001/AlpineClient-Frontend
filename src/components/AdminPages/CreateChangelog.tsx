@@ -1,41 +1,33 @@
-import type { TagProps } from '@/components/Tag/Tag';
-
 import React from 'react';
+import Button from '../Button';
 import { useMutation } from 'react-query';
-import { IoIosClose } from 'react-icons/io';
-
-import useImageUpload from '@/hooks/useImageUpload';
-import Button from '@/components/Button';
-import Input from '@/components/Input';
-import Image from '@/components/Image';
-import Tag from '@/components/Tag';
 import api from '@/api';
 
-const createChangelog: React.FC = () => {
+import ChangelogSection from '../ChangelogSection';
+
+export interface ISection {
+	id: number;
+	title: string;
+	color: string;
+	content: string;
+	editing: boolean;
+}
+
+const CreateChangelog: React.FC = () => {
+	const defaultSection = {
+		id: 0,
+		editing: true,
+		title: 'Added',
+		color: '#22c55e',
+		content: '',
+	};
+
+	const [title, setTitle] = React.useState<string>('');
 	const [error, setError] = React.useState<string | null>(null);
+	const [sections, setSections] = React.useState<ISection[]>([defaultSection]);
 
-	// Image uploading mutation, state, and ref
-	const [image, onImageChange] = useImageUpload();
-	const imageInput = React.useRef<HTMLInputElement>(null);
-
-	// Tag adding, removing, and state
-	const [tags, setTags] = React.useState<{ item: string; tag: TagProps['type'] }[]>([]);
-
-	const addTag = (item: string, tag: TagProps['type']) => {
-		setTags([...tags, { item, tag }]);
-	};
-
-	const removeTag = (index: number) => {
-		setTags(tags.filter((_, i) => i !== index));
-	};
-
-	// Changelog creation inputs, mutation, and submission
-	const [titleInput, setTitleInput] = React.useState<string>('');
-
-	const changelogCreateMutation = useMutation(api.addChangelog, {
+	const addChangelogMutation = useMutation(api.addChangelog, {
 		onSuccess: () => {
-			setTags([]);
-			setTitleInput('');
 			window.location.reload();
 		},
 		onError: () => {
@@ -43,104 +35,92 @@ const createChangelog: React.FC = () => {
 		},
 	});
 
+	const setSection = (section: ISection) => {
+		const newSections = sections.map((s) => {
+			if (s.id === section.id) {
+				return section;
+			}
+			return s;
+		});
+		setSections(newSections);
+	};
+
+	const addSection = () => {
+		const newSection = {
+			...defaultSection,
+			id: sections.length,
+		};
+		setSections([...sections, newSection]);
+	};
+
+	const removeSection = (id: number) => {
+		const newSections = sections.filter((s) => s.id !== id);
+		setSections(newSections);
+	};
+
+	const onTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const title = e.target.value;
+		setTitle(title);
+	};
+
 	const onSubmit = () => {
-		if (!image) {
-			setError('Please add an image.');
+		if (!title.length) {
+			setError('Title is required');
 			return;
 		}
 
-		if (!titleInput) {
-			setError('Please enter a title.');
-			return;
-		}
-
-		if (!tags.length) {
-			setError('Please add at least one tag.');
+		if (!sections.length) {
+			setError('At least one section is required');
 			return;
 		}
 
 		setError(null);
-		let added = tags.filter(({ tag }) => tag === 'success').map(({ item }) => item);
-		let removed = tags.filter(({ tag }) => tag === 'error').map(({ item }) => item);
-		let changed = tags.filter(({ tag }) => tag === 'warning').map(({ item }) => item);
-		changelogCreateMutation.mutate({ title: titleInput, image, added, removed, changed });
+		addChangelogMutation.mutate({
+			title,
+			sections,
+		});
 	};
 
 	return (
 		<div>
-			<h1 className=' my-3 text-6xl font-semibold text-white'>New Changelog</h1>
-			<input
-				type='file'
-				name='image'
-				ref={imageInput}
-				className='hidden'
-				accept='image/*'
-				onChange={onImageChange}
-			/>
-			<Button
-				className='mt-10 block'
-				color='secondary'
-				size='small'
-				onClick={() => imageInput.current?.click()}
-			>
-				Select Image
-			</Button>
+			<h1 className=' my-3 text-6xl font-semibold text-white'>Create Changelog</h1>
+
 			{error && (
 				<div className='my-5 w-full rounded-md bg-red-500 py-2 text-center lg:w-96'>
 					<p className='text-white'>{error}</p>
 				</div>
 			)}
-			{image && (
-				<div className='mt-5 max-w-[500px]'>
-					<Image src={image} />
-				</div>
-			)}
+
 			<input
-				value={titleInput}
+				value={title}
 				placeholder='Title'
-				onChange={(e) => setTitleInput(e.target.value)}
+				onChange={onTitleChange}
 				className='my-5 block w-full rounded-md border border-secondary-300 bg-secondary-400 p-4 text-white focus:outline-none focus:ring-4 focus:ring-navy lg:w-96'
 			/>
-			<Input.Changelog
-				placeholder='Items Added (Press enter after each item)'
-				tagType='success'
-				className='my-5'
-				addChangelogItem={addTag}
-			/>
-			<Input.Changelog
-				placeholder='Items Changed (Press enter after each item)'
-				tagType='warning'
-				className='my-5'
-				addChangelogItem={addTag}
-			/>
-			<Input.Changelog
-				placeholder='Items Removed (Press enter after each item)'
-				tagType='error'
-				className='my-5'
-				addChangelogItem={addTag}
-			/>
 
-			{tags.map((tag, i) => (
-				<div className='my-2 w-full rounded-md border border-secondary-300 lg:w-[600px]'>
-					<div className='flex items-center justify-between bg-secondary-400 p-2'>
-						<Tag type={tag.tag}>
-							<p className='text-gray-300'>{tag.item}</p>
-						</Tag>
-						<IoIosClose
-							size={25}
-							color={'white'}
-							className='cursor-pointer hover:opacity-50'
-							onClick={() => removeTag(i)}
-						/>
-					</div>
-				</div>
+			{sections.map((section, index) => (
+				<ChangelogSection.Edit
+					section={section}
+					setSection={setSection}
+					removeSection={removeSection}
+					key={index}
+				/>
 			))}
 
-			<Button size='small' className='mb-10 w-full lg:w-[600px]' onClick={onSubmit}>
-				Post Changelog
+			<Button
+				className='my-5 block w-full lg:w-[700px]'
+				size='small'
+				color='secondary'
+				onClick={addSection}
+			>
+				Add Section
+			</Button>
+
+			<Button className='block w-full lg:w-[700px]' size='small' color='primary' onClick={onSubmit}>
+				Submit
 			</Button>
 		</div>
 	);
 };
 
-export default createChangelog;
+export default CreateChangelog;

@@ -42,6 +42,7 @@ const Dashboard: NextPage = () => {
 				<div className='px-5 pt-10 lg:ml-96 lg:px-14 lg:pt-28 '>
 					{adminScreen === 'image' && <AdminPages.ImageUpload />}
 					{adminScreen === 'create' && <AdminPages.CreateChangelog />}
+					{adminScreen === 'staging' && <AdminPages.Staging />}
 					{typeof adminScreen === 'number' && (
 						<AdminPages.ViewChangelog changelog={changelog[adminScreen]} />
 					)}

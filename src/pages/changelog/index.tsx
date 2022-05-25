@@ -43,9 +43,7 @@ const Changelog: NextPage = () => {
 					{data.length > 0 && (
 						<Link href='/changelog/0'>
 							<div className='grid cursor-pointer gap-x-20 hover:opacity-80 lg:grid-cols-2 xl:grid-cols-12'>
-								<div className='h-96 rounded-xl bg-secondary-400 xl:col-span-5'>
-									<Image src={data[0].image} />
-								</div>
+								<div className='h-96 rounded-xl bg-secondary-400 xl:col-span-5'></div>
 								<div className='xl:col-span-7'>
 									<h1 className='mt-5 text-2xl uppercase text-gray-300'>{data[0].date}</h1>
 									<h1 className='my-5 text-5xl font-extrabold text-white'>{data[0].title}</h1>
@@ -60,14 +58,12 @@ const Changelog: NextPage = () => {
 				</Container>
 
 				<Container className='grid gap-x-10 px-5 md:grid-cols-2 xl:grid-cols-3'>
-					{data.map(({ date, title, image }, i) => {
+					{data.map(({ date, title }, i) => {
 						if (i === 0) return null;
 						return (
 							<Link href={`/changelog/${i}`}>
 								<div className='cursor-pointer hover:opacity-80'>
-									<div className=' my-10 h-72 rounded-xl bg-secondary-400'>
-										<Image src={image} />
-									</div>
+									<div className=' my-10 h-72 rounded-xl bg-secondary-400'></div>
 									<h1 className='text-2xl uppercase text-gray-300'>{date}</h1>
 									<h1 className='my-5 text-5xl font-extrabold text-white'>{title}</h1>
 									<p className='text-2xl font-medium leading-9 text-gray-300'>

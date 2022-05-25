@@ -3,7 +3,7 @@ import axios from 'axios';
 const baseUrl =
 	process.env.NODE_ENV == 'development'
 		? 'http://localhost:3008/v2'
-		: 'https://crystalapi.cloudstackup.com/v1';
+		: 'https://crystalapi.cloudstackup.com/v2';
 
 export default {
 	baseUrl,
@@ -27,7 +27,7 @@ export default {
 
 		return res.data;
 	},
-	addChangelog: async (changelog: Changelog) => {
+	addChangelog: async (changelog: Changelog | ChangelogV2) => {
 		const res = await axios.post(`${baseUrl}/changelog`, changelog, {
 			headers: {
 				Authorization: `${window.localStorage.getItem('token')}`,

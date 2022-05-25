@@ -6,15 +6,19 @@
     "start": "next start -p 3006"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
     "axios": "^0.27.2",
     "next": "latest",
     "react": "^17.0.2",
     "react-content-loader": "^6.2.0",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
+    "react-markdown": "^8.0.3",
     "react-query": "^3.39.0",
     "react-redux": "^8.0.1",
-    "redux": "^4.2.0"
+    "redux": "^4.2.0",
+    "rehype-raw": "^6.1.1",
+    "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
     "@types/node": "17.0.4",

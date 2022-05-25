@@ -9,6 +9,7 @@ import Background from '@/components/Background';
 
 import useChangelogQuery from '@/hooks/useChangelogQuery';
 import Image from '@/components/Image';
+import ChangelogSection from '@/components/ChangelogSection';
 
 const Changelog: React.FC = () => {
 	const router = useRouter();
@@ -20,7 +21,7 @@ const Changelog: React.FC = () => {
 
 	if (isLoading) return <Loading />;
 
-	const { image, date, title, added, removed, changed } = data[parseInt(id as string)];
+	const { date, title, sections } = data[parseInt(id as string)];
 
 	return (
 		<>
@@ -42,23 +43,12 @@ const Changelog: React.FC = () => {
 					<h1 className='text-[64px] font-extrabold text-white md:text-[96px] lg:text-[128px]'>
 						{title}
 					</h1>
-					<div className='mt-5 max-w-[800px]'>
-						<Image src={image} />
-					</div>
 				</Container>
 
 				<Container>
-					<div className='flex flex-col gap-y-6 py-10 text-sm text-gray-300 md:text-2xl'>
-						{added?.map((item) => (
-							<Tag type='success'>{item}</Tag>
-						))}
-						{removed?.map((item) => (
-							<Tag type='error'>{item}</Tag>
-						))}
-						{changed?.map((item) => (
-							<Tag type='warning'>{item}</Tag>
-						))}
-					</div>
+					{sections.map((section, index) => (
+						<ChangelogSection.View section={section} />
+					))}
 				</Container>
 			</main>
 		</>

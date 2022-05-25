@@ -1,6 +1,6 @@
 import { SET_ADMIN_SCREEN } from '../actions/adminScreen';
 
-export type AdminScreenState = number | 'create' | 'image';
+export type AdminScreenState = number | 'create' | 'image' | 'staging';
 
 export interface AdminScreenAction {
 	type: typeof SET_ADMIN_SCREEN;

@@ -5,7 +5,7 @@ import Button from '@/components/Button';
 import useAdminScreen from '@/hooks/useAdminScreen';
 
 export interface AdminSidebarProps {
-	changelog: Changelog[];
+	changelog: ChangelogV2[];
 }
 
 const AdminSidebar: React.FC<AdminSidebarProps> = ({ changelog }) => {
@@ -56,11 +56,21 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ changelog }) => {
 					</Button>
 					<Button
 						size='small'
-						className='mb-10 w-full'
+						className='mb-4 w-full'
 						onClick={() => onItemClick(() => setAdminScreen('image'))}
 					>
 						Image Uploader
 					</Button>
+
+					{process.env.NODE_ENV === 'development' && (
+						<Button
+							size='small'
+							className='mb-10 w-full'
+							onClick={() => onItemClick(() => setAdminScreen('staging'))}
+						>
+							Staging
+						</Button>
+					)}
 				</div>
 			</div>
 
