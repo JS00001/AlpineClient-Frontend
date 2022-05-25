@@ -1,9 +1,9 @@
 import React from 'react';
-import Button from '../Button';
 import { useMutation } from 'react-query';
-import api from '@/api';
 
-import ChangelogSection from '../ChangelogSection';
+import api from '@/api';
+import Button from '@/components/Button';
+import ChangelogSection from '@/components/ChangelogSection';
 
 export interface ISection {
 	id: number;

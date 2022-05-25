@@ -1,11 +1,12 @@
-import React from 'react';
 import type { ISection } from '../AdminPages/CreateChangelog';
-import { AiFillEdit } from 'react-icons/ai';
+
 import { RiCodeSSlashLine } from 'react-icons/ri';
+import { AiFillEdit } from 'react-icons/ai';
 import { IoIosClose } from 'react-icons/io';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkRaw from 'rehype-raw';
+import React from 'react';
 
 export interface Edit {
 	section: ISection;

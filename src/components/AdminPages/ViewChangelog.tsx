@@ -1,13 +1,11 @@
 import { useMutation } from 'react-query';
 
 import api from '@/api';
-import Tag from '@/components/Tag';
-import Image from '@/components/Image';
 import Button from '@/components/Button';
 import ChangelogSection from '../ChangelogSection';
 
 export interface ViewChangelogProps {
-	changelog: ChangelogV2;
+	changelog: Changelog;
 }
 
 const ViewChangelog: React.FC<ViewChangelogProps> = ({ changelog }) => {

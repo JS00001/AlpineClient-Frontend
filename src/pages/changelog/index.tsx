@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 
-import Image from '@/components/Image';
 import Navbar from '@/components/Navbar';
 import Container from '@/components/Container';
 import Skeletons from '@/components/Skeletons';

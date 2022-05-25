@@ -1,14 +1,12 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import Tag from '@/components/Tag';
 import Navbar from '@/components/Navbar';
 import Loading from '@/components/Loading';
 import Container from '@/components/Container';
 import Background from '@/components/Background';
 
 import useChangelogQuery from '@/hooks/useChangelogQuery';
-import Image from '@/components/Image';
 import ChangelogSection from '@/components/ChangelogSection';
 
 const Changelog: React.FC = () => {

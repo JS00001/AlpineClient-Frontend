@@ -5,7 +5,7 @@ import Button from '@/components/Button';
 import useAdminScreen from '@/hooks/useAdminScreen';
 
 export interface AdminSidebarProps {
-	changelog: ChangelogV2[];
+	changelog: Changelog[];
 }
 
 const AdminSidebar: React.FC<AdminSidebarProps> = ({ changelog }) => {
