@@ -18,6 +18,6 @@ jobs:
       - name: Install Playwright
         run: npx playwright install --with-deps
       - name: Run Jest
-        run: npm run jest
+        run: npm run test
       - name: Run Playwright tests
         run: npm run test:e2e
