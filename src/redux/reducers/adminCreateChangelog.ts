@@ -4,7 +4,7 @@ export const defaultSection = {
 	id: 0,
 	editing: true,
 	title: 'Added',
-	color: '#22c55e',
+	color: '#0071F2',
 	content: '',
 };
 

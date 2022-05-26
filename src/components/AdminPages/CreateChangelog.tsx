@@ -129,7 +129,12 @@ const CreateChangelog: React.FC = () => {
 				Add Section
 			</Button>
 
-			<Button className='block w-full lg:w-[700px]' size='small' color='primary' onClick={onSubmit}>
+			<Button
+				className='mb-10 block w-full lg:w-[700px]'
+				size='small'
+				color='primary'
+				onClick={onSubmit}
+			>
 				Submit
 			</Button>
 		</div>

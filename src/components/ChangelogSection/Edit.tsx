@@ -1,4 +1,4 @@
-import { RiCodeSSlashLine } from 'react-icons/ri';
+import { RiCodeSSlashLine, RiBookLine } from 'react-icons/ri';
 import { IoIosClose, IoIosArrowUp, IoIosArrowDown, IoMdBrush } from 'react-icons/io';
 import React from 'react';
 
@@ -47,7 +47,7 @@ const Edit: React.FC<Edit> = ({ section, removeSection, setSection, moveSection 
 	};
 
 	return (
-		<div className='mt-10 w-full rounded-md bg-secondary-400 lg:w-[700px]'>
+		<div className='mb-8 w-full rounded-md bg-secondary-400 lg:w-[700px]'>
 			<div
 				className='relative flex items-center justify-between rounded-t-md p-4'
 				style={{ background: color }}
@@ -61,6 +61,12 @@ const Edit: React.FC<Edit> = ({ section, removeSection, setSection, moveSection 
 				/>
 
 				<div className='relative z-10 flex items-center gap-x-5'>
+					<RiCodeSSlashLine
+						className='text-white hover:opacity-50'
+						size={24}
+						onClick={onEditClick}
+					/>
+
 					<IoIosArrowUp
 						size={24}
 						className='cursor-pointer text-white hover:opacity-50'
@@ -94,18 +100,13 @@ const Edit: React.FC<Edit> = ({ section, removeSection, setSection, moveSection 
 				</div>
 			</div>
 
-			<div className='p-3'>
-				<div className='flex justify-end'>
-					<span className='mb-3 rounded-full bg-secondary-300 p-2' onClick={onEditClick}>
-						<RiCodeSSlashLine className='cursor-pointer hover:opacity-50' size={24} color='#fff' />
-					</span>
-				</div>
+			<div className='p-5'>
 				{editing && (
 					<textarea
 						value={content}
 						onChange={onContentChange}
 						placeholder='You can edit this text with **markdown**'
-						className='h-28 w-full rounded-md border border-secondary-300 bg-secondary-400 p-3 text-secondary-100 focus:outline-none focus:ring-4 focus:ring-navy'
+						className='h-40 w-full rounded-md border border-secondary-300 bg-secondary-400 p-3 text-secondary-100 focus:outline-none focus:ring-4 focus:ring-navy'
 					/>
 				)}
 				{!editing && <Markdown>{content || 'You can edit this text with **markdown**'}</Markdown>}
