@@ -1,6 +1,4 @@
-import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
-import remarkGfm from 'remark-gfm';
+import Markdown from '@/components/Markdown';
 
 export interface ViewProps {
 	section: ChangelogSection;
@@ -19,13 +17,7 @@ const View: React.FC<ViewProps> = ({ section }) => {
 			</div>
 
 			<div className='p-6'>
-				<ReactMarkdown
-					rehypePlugins={[rehypeRaw]}
-					remarkPlugins={[remarkGfm]}
-					className='w-full  p-3 text-secondary-100'
-				>
-					{content}
-				</ReactMarkdown>
+				<Markdown>{content}</Markdown>
 			</div>
 		</div>
 	);

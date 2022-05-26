@@ -1,10 +1,9 @@
 import { RiCodeSSlashLine } from 'react-icons/ri';
 import { AiFillEdit } from 'react-icons/ai';
 import { IoIosClose } from 'react-icons/io';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import remarkRaw from 'rehype-raw';
 import React from 'react';
+
+import Markdown from '@/components/Markdown';
 
 export interface Edit {
 	section: ChangelogSection;
@@ -79,21 +78,7 @@ const Edit: React.FC<Edit> = ({ section, removeSection, setSection }) => {
 						className='h-28 w-full rounded-md border border-secondary-300 bg-secondary-400 p-3 text-secondary-100 focus:outline-none focus:ring-4 focus:ring-navy'
 					/>
 				)}
-				{!editing && (
-					<ReactMarkdown
-						rehypePlugins={[remarkRaw]}
-						remarkPlugins={[remarkGfm]}
-						components={{
-							h1: (props: any) => <h1 {...props} className='text-3xl font-bold' />,
-							h2: (props: any) => <h2 {...props} className='text-2xl font-semibold' />,
-							h3: (props: any) => <h3 {...props} className='text-xl font-medium' />,
-							h4: (props: any) => <h4 {...props} className='text-lg font-normal' />,
-						}}
-						className='w-full rounded-md border border-secondary-300 p-6 text-secondary-100'
-					>
-						{content || 'You can edit this text with **markdown**'}
-					</ReactMarkdown>
-				)}
+				{!editing && <Markdown>{content || 'You can edit this text with **markdown**'}</Markdown>}
 			</div>
 		</div>
 	);
