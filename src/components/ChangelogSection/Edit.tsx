@@ -1,6 +1,5 @@
 import { RiCodeSSlashLine } from 'react-icons/ri';
-import { AiFillEdit } from 'react-icons/ai';
-import { IoIosClose } from 'react-icons/io';
+import { IoIosClose, IoIosArrowUp, IoIosArrowDown, IoMdBrush } from 'react-icons/io';
 import React from 'react';
 
 import Markdown from '@/components/Markdown';
@@ -9,10 +8,16 @@ export interface Edit {
 	section: ChangelogSection;
 	removeSection: (id: number) => void;
 	setSection: (section: ChangelogSection) => void;
+	moveSection: (id: number, direction: 'up' | 'down') => void;
 }
 
-const Edit: React.FC<Edit> = ({ section, removeSection, setSection }) => {
+const Edit: React.FC<Edit> = ({ section, removeSection, setSection, moveSection }) => {
 	const { id, title, color, content, editing } = section;
+	const colorInput = React.useRef<HTMLInputElement>(null);
+
+	const onColorClick = () => {
+		colorInput.current?.click();
+	};
 
 	const onColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const color = e.target.value;
@@ -33,34 +38,59 @@ const Edit: React.FC<Edit> = ({ section, removeSection, setSection }) => {
 		setSection({ ...section, editing: !editing });
 	};
 
+	const onRemoveClick = () => {
+		removeSection(id as number);
+	};
+
+	const onMoveClick = (direction: 'up' | 'down') => {
+		moveSection(id as number, direction);
+	};
+
 	return (
 		<div className='mt-10 w-full rounded-md bg-secondary-400 lg:w-[700px]'>
 			<div
-				className='relative flex items-center justify-between rounded-t-md p-3'
+				className='relative flex items-center justify-between rounded-t-md p-4'
 				style={{ background: color }}
 			>
-				<IoIosClose
-					size={30}
-					className='cursor-pointer text-white hover:opacity-50'
-					onClick={() => removeSection(id as number)}
-				/>
-
 				<input
 					value={title}
 					type='text'
 					onChange={onTitleChange}
-					className='cursor-pointer bg-transparent text-center text-2xl font-semibold text-white placeholder:text-white hover:opacity-50 focus:outline-none focus:placeholder:text-transparent'
+					className='cursor-pointer bg-transparent text-2xl font-semibold text-white placeholder:text-white hover:opacity-50 focus:outline-none focus:placeholder:text-transparent'
 					placeholder='ADDED'
 				/>
 
-				<div className='relative hover:opacity-50'>
+				<div className='relative z-10 flex items-center gap-x-5'>
+					<IoIosArrowUp
+						size={24}
+						className='cursor-pointer text-white hover:opacity-50'
+						onClick={() => onMoveClick('up')}
+					/>
+
+					<IoIosArrowDown
+						size={24}
+						className='cursor-pointer text-white hover:opacity-50'
+						onClick={() => onMoveClick('down')}
+					/>
 					<input
-						className='absolute opacity-0'
+						className='absolute right-0 z-0 opacity-0'
 						type='color'
 						name='color'
+						ref={colorInput}
 						onChange={onColorChange}
 					/>
-					<AiFillEdit size={24} className='text-white ' />
+
+					<IoMdBrush
+						size={20}
+						className=' z-10 cursor-pointer text-white hover:opacity-50'
+						onClick={onColorClick}
+					/>
+
+					<IoIosClose
+						size={35}
+						className='z-10 cursor-pointer text-white hover:opacity-50'
+						onClick={onRemoveClick}
+					/>
 				</div>
 			</div>
 

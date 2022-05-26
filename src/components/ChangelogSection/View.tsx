@@ -10,8 +10,12 @@ const View: React.FC<ViewProps> = ({ section }) => {
 	return (
 		<div className='mt-10 w-full rounded-md border border-secondary-300 bg-main lg:w-[900px]'>
 			<div
-				className='relative flex items-center justify-center rounded-t-md p-3'
-				style={{ background: color }}
+				style={{
+					overflow: 'hidden',
+					background: `linear-gradient(-60deg, ${color}95, ${color} 10%, ${color}95)`,
+					backgroundSize: '400% 400%',
+				}}
+				className='animate-gradient relative flex items-center justify-center rounded-t-md p-4'
 			>
 				<h1 className=' text-center text-2xl font-semibold text-white'>{title}</h1>
 			</div>

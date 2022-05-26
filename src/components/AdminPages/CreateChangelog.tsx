@@ -46,6 +46,30 @@ const CreateChangelog: React.FC = () => {
 		setSections(newSections);
 	};
 
+	const moveSection = (id: number, direction: 'up' | 'down') => {
+		// find the current index of the section
+		const currentIndex = sections.findIndex((s) => s.id === id);
+
+		// find the index of the section to swap with
+		const swapIndex = direction === 'up' ? currentIndex - 1 : currentIndex + 1;
+
+		// if the swap index is out of bounds, do nothing
+		if (swapIndex < 0 || swapIndex >= sections.length) {
+			return;
+		}
+
+		// create a copy of the sections array
+		const newSections = [...sections];
+
+		// swap the sections
+		const temp = newSections[currentIndex];
+		newSections[currentIndex] = newSections[swapIndex];
+		newSections[swapIndex] = temp;
+
+		// set the new sections
+		setSections(newSections);
+	};
+
 	const onTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const title = e.target.value;
 		setTitle(title);
@@ -90,6 +114,7 @@ const CreateChangelog: React.FC = () => {
 				<ChangelogSection.Edit
 					section={section}
 					setSection={setSection}
+					moveSection={moveSection}
 					removeSection={removeSection}
 					key={index}
 				/>
