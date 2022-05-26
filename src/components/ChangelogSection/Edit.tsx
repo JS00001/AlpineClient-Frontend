@@ -62,7 +62,7 @@ const Edit: React.FC<Edit> = ({ section, removeSection, setSection, moveSection 
 
 				<div className='relative z-10 flex items-center gap-x-5'>
 					<RiCodeSSlashLine
-						className='text-white hover:opacity-50'
+						className='cursor-pointer text-white hover:opacity-50'
 						size={24}
 						onClick={onEditClick}
 					/>
