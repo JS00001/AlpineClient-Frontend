@@ -27,7 +27,7 @@ const Dashboard: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<title>Crystal Client - Admin</title>
+				<title>Alpine Client - Admin</title>
 			</Head>
 
 			<nav className='relative z-[60] lg:fixed'>

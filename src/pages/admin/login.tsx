@@ -28,7 +28,7 @@ const LoginPage: NextPage = () => {
 		return (
 			<>
 				<Head>
-					<title>Crystal Client - Admin</title>
+					<title>Alpine Client - Admin</title>
 				</Head>
 
 				<nav className='relative z-50'>

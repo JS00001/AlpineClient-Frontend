@@ -17,7 +17,7 @@ const Changelog: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<title>Crystal Client</title>
+				<title>Alpine Client</title>
 			</Head>
 
 			<nav className='relative z-50'>
