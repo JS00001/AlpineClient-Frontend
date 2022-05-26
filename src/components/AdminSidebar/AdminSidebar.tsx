@@ -82,6 +82,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ changelog }) => {
 				</h2>
 				{changelog.map((item, i) => (
 					<div
+						key={i}
 						className={
 							'mb-5 cursor-pointer rounded-lg p-4 hover:bg-secondary-400 ' +
 							(currentAdminScreen == i && 'bg-secondary-400')

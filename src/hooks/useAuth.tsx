@@ -1,14 +1,11 @@
 import { useQuery } from 'react-query';
 import api from '@/api';
+import { useEffect } from 'react';
 
 const useAuth = (): { isLoading: boolean; isAuth: boolean } => {
 	const { data: user, isLoading, isError } = useQuery('user', api.user);
 
-	if (typeof window === 'undefined') {
-		return { isLoading: false, isAuth: false };
-	}
-
-	if (!window.localStorage.getItem('token')) {
+	if (typeof window !== 'undefined' && !window?.localStorage.getItem('token')) {
 		return { isLoading: false, isAuth: false };
 	}
 
