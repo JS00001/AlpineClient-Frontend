@@ -13,9 +13,9 @@ const View: React.FC<ViewProps> = ({ section }) => {
 				style={{
 					background: color,
 				}}
-				className='relative flex items-center justify-center rounded-t-md p-4'
+				className='relative flex items-center rounded-t-md p-4'
 			>
-				<h1 className=' text-center text-2xl font-medium text-white'>{title}</h1>
+				<h1 className=' text-left text-2xl font-medium text-white'>{title}</h1>
 			</div>
 
 			<div className='p-6'>

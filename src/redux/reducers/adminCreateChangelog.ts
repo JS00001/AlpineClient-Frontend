@@ -3,7 +3,7 @@ import { SET_CHANGELOG_SECTIONS } from '../actions/adminCreateChangelog';
 export const defaultSection = {
 	id: 0,
 	editing: true,
-	title: 'Added',
+	title: 'Click to Edit',
 	color: '#0071F2',
 	content: '',
 };

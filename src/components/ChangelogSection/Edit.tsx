@@ -57,7 +57,7 @@ const Edit: React.FC<Edit> = ({ section, removeSection, setSection, moveSection 
 					type='text'
 					onChange={onTitleChange}
 					className='cursor-pointer bg-transparent text-2xl font-medium text-white placeholder:text-white hover:opacity-50 focus:outline-none focus:placeholder:text-transparent'
-					placeholder='ADDED'
+					placeholder='Click to Edit'
 				/>
 
 				<div className='relative z-10 flex items-center gap-x-5'>
