@@ -6,12 +6,12 @@ import Loading from '@/components/Loading';
 import Container from '@/components/Container';
 import Background from '@/components/Background';
 
-import useChangelogQuery from '@/hooks/useChangelogQuery';
+import useChangelog from '@/hooks/useChangelog';
 import ChangelogSection from '@/components/ChangelogSection';
 
 const Changelog: React.FC = () => {
 	const router = useRouter();
-	const { isLoading, data } = useChangelogQuery();
+	const { isLoading, data } = useChangelog();
 
 	const { id } = router.query;
 

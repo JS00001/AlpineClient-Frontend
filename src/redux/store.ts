@@ -1,8 +1,10 @@
 import { createStore, combineReducers } from 'redux';
-import adminScreen from './reducers/adminScreen';
+import adminCreateChangelog from './reducers/adminCreateChangelog';
+import currentAdminScreen from './reducers/currentAdminScreen';
 
 const reducers = combineReducers({
-	adminScreen,
+	currentAdminScreen,
+	adminCreateChangelog,
 });
 
 export default createStore(reducers);

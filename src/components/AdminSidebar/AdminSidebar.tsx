@@ -2,7 +2,7 @@ import React from 'react';
 import { HiMenuAlt3 } from 'react-icons/hi';
 
 import Button from '@/components/Button';
-import useAdminScreen from '@/hooks/useAdminScreen';
+import useAdminCurrentScreen from '@/hooks/useAdminCurrentScreen';
 
 export interface AdminSidebarProps {
 	changelog: Changelog[];
@@ -10,7 +10,7 @@ export interface AdminSidebarProps {
 
 const AdminSidebar: React.FC<AdminSidebarProps> = ({ changelog }) => {
 	const [collapsed, setCollapsed] = React.useState(true);
-	const [adminScreen, setAdminScreen] = useAdminScreen();
+	const [currentAdminScreen, setcurrentAdminScreen] = useAdminCurrentScreen();
 
 	const onSignOut = () => {
 		window.localStorage.removeItem('token');
@@ -50,14 +50,14 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ changelog }) => {
 					<Button
 						size='small'
 						className=' mb-4 w-full'
-						onClick={() => onItemClick(() => setAdminScreen('create'))}
+						onClick={() => onItemClick(() => setcurrentAdminScreen('create'))}
 					>
 						New Changelog
 					</Button>
 					<Button
 						size='small'
 						className='mb-4 w-full'
-						onClick={() => onItemClick(() => setAdminScreen('image'))}
+						onClick={() => onItemClick(() => setcurrentAdminScreen('image'))}
 					>
 						Image Uploader
 					</Button>
@@ -66,7 +66,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ changelog }) => {
 						<Button
 							size='small'
 							className='mb-10 w-full'
-							onClick={() => onItemClick(() => setAdminScreen('staging'))}
+							onClick={() => onItemClick(() => setcurrentAdminScreen('staging'))}
 						>
 							Staging
 						</Button>
@@ -84,9 +84,9 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ changelog }) => {
 					<div
 						className={
 							'mb-5 cursor-pointer rounded-lg p-4 hover:bg-secondary-400 ' +
-							(adminScreen == i && 'bg-secondary-400')
+							(currentAdminScreen == i && 'bg-secondary-400')
 						}
-						onClick={() => onItemClick(() => setAdminScreen(i))}
+						onClick={() => onItemClick(() => setcurrentAdminScreen(i))}
 					>
 						<h2 className='text-xl font-medium uppercase text-gray-300'>{item.date}</h2>
 						<h1 className='text-4xl font-semibold text-white'>{item.title}</h1>

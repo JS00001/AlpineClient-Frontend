@@ -10,13 +10,13 @@ import AdminPages from '@/components/AdminPages';
 import AdminSidebar from '@/components/AdminSidebar';
 
 import useAuth from '@/hooks/useAuth';
-import useAdminScreen from '@/hooks/useAdminScreen';
-import useChangelogQuery from '@/hooks/useChangelogQuery';
+import useAdminCurrentScreen from '@/hooks/useAdminCurrentScreen';
+import useChangelog from '@/hooks/useChangelog';
 
 const Dashboard: NextPage = () => {
-	const [adminScreen] = useAdminScreen();
+	const [currentAdminScreen] = useAdminCurrentScreen();
 	const { isLoading: isAuthLoading, isAuth } = useAuth();
-	const { isLoading: isChangelogLoading, data: changelog } = useChangelogQuery();
+	const { isLoading: isChangelogLoading, data: changelog } = useChangelog();
 
 	if (isAuthLoading) return <Loading />;
 
@@ -40,11 +40,11 @@ const Dashboard: NextPage = () => {
 
 			<main className='relative z-50'>
 				<div className='px-5 pt-10 lg:ml-96 lg:px-14 lg:pt-28 '>
-					{adminScreen === 'image' && <AdminPages.ImageUpload />}
-					{adminScreen === 'create' && <AdminPages.CreateChangelog />}
-					{adminScreen === 'staging' && <AdminPages.Staging />}
-					{typeof adminScreen === 'number' && (
-						<AdminPages.ViewChangelog changelog={changelog[adminScreen]} />
+					{currentAdminScreen === 'image' && <AdminPages.ImageUpload />}
+					{currentAdminScreen === 'create' && <AdminPages.CreateChangelog />}
+					{currentAdminScreen === 'staging' && <AdminPages.Staging />}
+					{typeof currentAdminScreen === 'number' && (
+						<AdminPages.ViewChangelog changelog={changelog[currentAdminScreen]} />
 					)}
 				</div>
 			</main>

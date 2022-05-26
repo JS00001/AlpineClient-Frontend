@@ -4,27 +4,14 @@ import { useMutation } from 'react-query';
 import api from '@/api';
 import Button from '@/components/Button';
 import ChangelogSection from '@/components/ChangelogSection';
+import { defaultSection } from '@/redux/reducers/adminCreateChangelog';
 
-export interface ISection {
-	id: number;
-	title: string;
-	color: string;
-	content: string;
-	editing: boolean;
-}
+import useAdminCreateChangelog from '@/hooks/useAdminCreateChangelog';
 
 const CreateChangelog: React.FC = () => {
-	const defaultSection = {
-		id: 0,
-		editing: true,
-		title: 'Added',
-		color: '#22c55e',
-		content: '',
-	};
-
 	const [title, setTitle] = React.useState<string>('');
 	const [error, setError] = React.useState<string | null>(null);
-	const [sections, setSections] = React.useState<ISection[]>([defaultSection]);
+	const [sections, setSections] = useAdminCreateChangelog();
 
 	const addChangelogMutation = useMutation(api.addChangelog, {
 		onSuccess: () => {
@@ -35,7 +22,7 @@ const CreateChangelog: React.FC = () => {
 		},
 	});
 
-	const setSection = (section: ISection) => {
+	const setSection = (section: ChangelogSection) => {
 		const newSections = sections.map((s) => {
 			if (s.id === section.id) {
 				return section;

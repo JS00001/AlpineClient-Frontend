@@ -3,7 +3,7 @@ import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 
 export interface ViewProps {
-	section: Section;
+	section: ChangelogSection;
 }
 
 const View: React.FC<ViewProps> = ({ section }) => {

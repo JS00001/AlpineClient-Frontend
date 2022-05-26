@@ -2,7 +2,7 @@ import { useMutation } from 'react-query';
 
 import api from '@/api';
 import Button from '@/components/Button';
-import ChangelogSection from '../ChangelogSection';
+import ChangelogSection from '@/components/ChangelogSection';
 
 export interface ViewChangelogProps {
 	changelog: Changelog;

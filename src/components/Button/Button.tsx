@@ -1,9 +1,10 @@
 import React from 'react';
 
 const colorStyles = {
-	primary: 'bg-primary-400 rounded-md text-white cursor-pointer hover:bg-primary-300',
+	primary:
+		'bg-primary-400 rounded-md text-white cursor-pointer hover:bg-primary-300 focus:ring-4 focus:ring-navy',
 	secondary:
-		'text-center bg-secondary-400 rounded-md text-white cursor-pointer hover:bg-secondary-300',
+		'text-center bg-secondary-400 rounded-md text-white cursor-pointer hover:bg-secondary-300 focus:ring-4 focus:ring-navy',
 	error: 'bg-red-500 rounded-md text-white cursor-pointer hover:bg-red-400',
 };
 

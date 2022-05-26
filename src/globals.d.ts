@@ -5,7 +5,9 @@ interface Changelog {
 	sections: Section[];
 }
 
-interface Section {
+interface ChangelogSection {
+	id?: number;
+	editing?: boolean;
 	title: string;
 	color: string;
 	content: string;

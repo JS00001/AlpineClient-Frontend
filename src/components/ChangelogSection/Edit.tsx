@@ -1,5 +1,3 @@
-import type { ISection } from '../AdminPages/CreateChangelog';
-
 import { RiCodeSSlashLine } from 'react-icons/ri';
 import { AiFillEdit } from 'react-icons/ai';
 import { IoIosClose } from 'react-icons/io';
@@ -9,9 +7,9 @@ import remarkRaw from 'rehype-raw';
 import React from 'react';
 
 export interface Edit {
-	section: ISection;
+	section: ChangelogSection;
 	removeSection: (id: number) => void;
-	setSection: (section: ISection) => void;
+	setSection: (section: ChangelogSection) => void;
 }
 
 const Edit: React.FC<Edit> = ({ section, removeSection, setSection }) => {
@@ -45,7 +43,7 @@ const Edit: React.FC<Edit> = ({ section, removeSection, setSection }) => {
 				<IoIosClose
 					size={30}
 					className='cursor-pointer text-white hover:opacity-50'
-					onClick={() => removeSection(id)}
+					onClick={() => removeSection(id as number)}
 				/>
 
 				<input
@@ -85,6 +83,12 @@ const Edit: React.FC<Edit> = ({ section, removeSection, setSection }) => {
 					<ReactMarkdown
 						rehypePlugins={[remarkRaw]}
 						remarkPlugins={[remarkGfm]}
+						components={{
+							h1: (props: any) => <h1 {...props} className='text-3xl font-bold' />,
+							h2: (props: any) => <h2 {...props} className='text-2xl font-semibold' />,
+							h3: (props: any) => <h3 {...props} className='text-xl font-medium' />,
+							h4: (props: any) => <h4 {...props} className='text-lg font-normal' />,
+						}}
 						className='w-full rounded-md border border-secondary-300 p-6 text-secondary-100'
 					>
 						{content || 'You can edit this text with **markdown**'}

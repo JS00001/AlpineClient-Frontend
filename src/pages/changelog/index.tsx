@@ -7,10 +7,10 @@ import Container from '@/components/Container';
 import Skeletons from '@/components/Skeletons';
 import Background from '@/components/Background';
 
-import useChangelogQuery from '@/hooks/useChangelogQuery';
+import useChangelog from '@/hooks/useChangelog';
 
 const Changelog: NextPage = () => {
-	const { isLoading, data } = useChangelogQuery();
+	const { isLoading, data } = useChangelog();
 
 	if (isLoading) return <Skeletons.ChangelogSkeleton />;
 
