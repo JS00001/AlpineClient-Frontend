@@ -1,4 +1,5 @@
 import React from 'react';
+import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
 
 import api from '@/api';
@@ -17,8 +18,8 @@ const CreateChangelog: React.FC = () => {
 		onSuccess: () => {
 			window.location.reload();
 		},
-		onError: () => {
-			window.location.reload();
+		onError: (e: AxiosError) => {
+			setError('Error code ' + e.response?.status);
 		},
 	});
 

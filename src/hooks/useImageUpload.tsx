@@ -21,7 +21,7 @@ const useImageUpload = () => {
 		}
 	};
 
-	return [image, onImageChange] as const;
+	return { isLoading: imageUploadMutation.status === 'loading', image, onImageChange };
 };
 
 export default useImageUpload;

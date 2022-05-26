@@ -2,14 +2,15 @@ import React from 'react';
 
 import Image from '@/components/Image';
 import Button from '@/components/Button';
+import Loading from '@/components/Loading';
 
 import useImageUpload from '@/hooks/useImageUpload';
 import useCopyToClipboard from '@/hooks/useCopyToClipboard';
 
 const ImageUpload: React.FC = () => {
 	const copy = useCopyToClipboard();
-	const [image, onImageChange] = useImageUpload();
 	const imageInput = React.useRef<HTMLInputElement>(null);
+	const { isLoading, image, onImageChange } = useImageUpload();
 
 	return (
 		<div>
@@ -28,6 +29,7 @@ const ImageUpload: React.FC = () => {
 			<Button color='secondary' className='mt-10' onClick={() => imageInput.current?.click()}>
 				Select Image
 			</Button>
+			{isLoading && <Loading fullScreen={false} />}
 			{image && (
 				<div className=' max-w-[800px]'>
 					<h2 className='mt-14 text-xl font-medium uppercase text-gray-300'>Click URL to Copy</h2>

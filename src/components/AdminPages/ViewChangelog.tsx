@@ -1,3 +1,5 @@
+import React from 'react';
+import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
 
 import api from '@/api';
@@ -9,18 +11,27 @@ export interface ViewChangelogProps {
 }
 
 const ViewChangelog: React.FC<ViewChangelogProps> = ({ changelog }) => {
+	const [error, setError] = React.useState<string | null>(null);
 	const changelogDeleteMutation = useMutation(api.deleteChangelog, {
 		onSuccess: () => {
 			window.location.reload();
 		},
-		onError: () => {
-			window.location.reload();
+		onError: (e: AxiosError) => {
+			setError('Error code ' + e.response?.status);
 		},
 	});
 
 	const onDelete = async () => {
 		changelogDeleteMutation.mutate(changelog._id as string);
 	};
+
+	if (error) {
+		return (
+			<div className='my-5 w-full rounded-md bg-red-500 py-2 text-center lg:w-96'>
+				<p className='text-white'>{error}</p>
+			</div>
+		);
+	}
 
 	return (
 		<div>

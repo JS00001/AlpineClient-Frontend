@@ -10,8 +10,8 @@ import AdminPages from '@/components/AdminPages';
 import AdminSidebar from '@/components/AdminSidebar';
 
 import useAuth from '@/hooks/useAuth';
-import useAdminCurrentScreen from '@/hooks/useAdminCurrentScreen';
 import useChangelog from '@/hooks/useChangelog';
+import useAdminCurrentScreen from '@/hooks/useAdminCurrentScreen';
 
 const Dashboard: NextPage = () => {
 	const [currentAdminScreen] = useAdminCurrentScreen();
