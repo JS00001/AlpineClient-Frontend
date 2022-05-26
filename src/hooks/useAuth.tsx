@@ -1,6 +1,5 @@
 import { useQuery } from 'react-query';
 import api from '@/api';
-import { useEffect } from 'react';
 
 const useAuth = (): { isLoading: boolean; isAuth: boolean } => {
 	const { data: user, isLoading, isError } = useQuery('user', api.user);

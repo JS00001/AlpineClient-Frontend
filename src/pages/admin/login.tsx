@@ -16,16 +16,15 @@ import Container from '@/components/Container';
 
 const LoginPage: NextPage = () => {
 	const router = useRouter();
-	const { code, errorMessage } = router.query;
 
-	if (!router.isReady) return <Loading />;
+	const { code, errorMessage } = router.query;
 
 	const { data, error } = useQuery('login', () => api.login(code as string), {
 		retry: false,
 		enabled: !!code,
 	});
 
-	if (!code)
+	if (!code) {
 		return (
 			<>
 				<Head>
@@ -49,14 +48,17 @@ const LoginPage: NextPage = () => {
 								</div>
 							)}
 
-							<Link href={api.baseUrl + '/login'}>
-								<Button className='mt-5'>Login with Discord</Button>
+							<Link href={api.baseUrl + '/login'} passHref>
+								<a>
+									<Button className='mt-5'>Login with Discord</Button>
+								</a>
 							</Link>
 						</div>
 					</Container>
 				</main>
 			</>
 		);
+	}
 
 	if (error) return <Redirect href='/admin/login?errorMessage=Unauthorized+User' />;
 
