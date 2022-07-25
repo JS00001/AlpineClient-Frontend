@@ -2,18 +2,14 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 
+import { fetchApi, getFileUrl } from '@/api';
+
+import Image from '@/components/Image';
 import Navbar from '@/components/Navbar';
 import Container from '@/components/Container';
-import Skeletons from '@/components/Skeletons';
 import Background from '@/components/Background';
 
-import useChangelog from '@/hooks/useChangelog';
-
-const Changelog: NextPage = () => {
-	const { isLoading, data } = useChangelog();
-
-	if (isLoading) return <Skeletons.ChangelogSkeleton />;
-
+const Changelog: NextPage<Changelogs> = ({ changelogs }) => {
 	return (
 		<>
 			<Head>
@@ -39,16 +35,17 @@ const Changelog: NextPage = () => {
 				</Container>
 
 				<Container className=' px-5'>
-					{data.length > 0 && (
+					{changelogs.length > 0 && (
 						<Link href='/changelog/0'>
 							<div className='grid cursor-pointer gap-x-20 hover:opacity-80 lg:grid-cols-2 xl:grid-cols-12'>
-								<div className='h-96 rounded-xl bg-secondary-400 xl:col-span-5'></div>
+								<div className='h-96 rounded-xl xl:col-span-5'>
+									<Image src={getFileUrl(changelogs[0].thumbnail)} />
+								</div>
 								<div className='xl:col-span-7'>
-									<h1 className='mt-5 text-2xl uppercase text-gray-300'>{data[0].date}</h1>
-									<h1 className='my-5 text-5xl font-extrabold text-white'>{data[0].title}</h1>
+									{/* <h1 className='mt-5 text-2xl uppercase text-gray-300'>{data[0].date}</h1> */}
+									<h1 className='my-5 text-5xl font-extrabold text-white'>{changelogs[0].title}</h1>
 									<p className='text-2xl font-medium leading-9 text-gray-300'>
-										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-										Ipsum has been the industry's standard dummy text ever since the 1500s.
+										{changelogs[0].description}
 									</p>
 								</div>
 							</div>
@@ -57,18 +54,17 @@ const Changelog: NextPage = () => {
 				</Container>
 
 				<Container className='grid gap-x-10 px-5 md:grid-cols-2 xl:grid-cols-3'>
-					{data.map(({ date, title }, i) => {
+					{changelogs.map(({ title, description, thumbnail }, i) => {
 						if (i === 0) return null;
 						return (
 							<Link href={`/changelog/${i}`}>
 								<div className='cursor-pointer hover:opacity-80'>
-									<div className=' my-10 h-72 rounded-xl bg-secondary-400'></div>
-									<h1 className='text-2xl uppercase text-gray-300'>{date}</h1>
+									<div className=' my-10 h-72 rounded-xl bg-secondary-400'>
+										<Image src={getFileUrl(thumbnail)} />
+									</div>
+									{/* <h1 className='text-2xl uppercase text-gray-300'>{date}</h1> */}
 									<h1 className='my-5 text-5xl font-extrabold text-white'>{title}</h1>
-									<p className='text-2xl font-medium leading-9 text-gray-300'>
-										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-										Ipsum has been the industry's standard dummy text ever since the 1500s.
-									</p>
+									<p className='text-2xl font-medium leading-9 text-gray-300'>{description}</p>
 								</div>
 							</Link>
 						);
@@ -77,6 +73,15 @@ const Changelog: NextPage = () => {
 			</main>
 		</>
 	);
+};
+
+Changelog.getInitialProps = async () => {
+	const res = await fetchApi('/changelog', {
+		populate: ['changelogs.sections', 'changelogs.thumbnail'],
+	});
+	const data = res.data.attributes;
+
+	return data;
 };
 
 export default Changelog;

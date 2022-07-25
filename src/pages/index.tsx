@@ -1,6 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
+import { fetchApi, getFileUrl } from '@/api';
+
 import Content from '@/content';
 import Faq from '@/components/Faq';
 import Navbar from '@/components/Navbar';
@@ -10,7 +12,17 @@ import Showcase from '@/components/Showcase';
 import Container from '@/components/Container';
 import Background from '@/components/Background';
 
-const Home: NextPage = () => {
+const Home: NextPage<HomepageFiles> = ({ windows_download_file, mac_download_file }) => {
+	const downloadWindows = () => {
+		const url = getFileUrl(windows_download_file);
+		window.open(url, '_blank');
+	};
+
+	const downloadMac = () => {
+		const url = getFileUrl(mac_download_file);
+		window.open(url, '_blank');
+	};
+
 	return (
 		<>
 			<Head>
@@ -35,8 +47,10 @@ const Home: NextPage = () => {
 						From the Original Developers of Crystal Client
 					</h2>
 					<div className='mt-10 flex gap-x-3'>
-						<Button className='md:w-[250px]'>Windows</Button>
-						<Button className='md:w-[250px]' color='secondary'>
+						<Button className='md:w-[250px]' disabled onClick={downloadWindows}>
+							Windows
+						</Button>
+						<Button className='md:w-[250px]' disabled color='secondary' onClick={downloadMac}>
 							MacOS
 						</Button>
 					</div>
@@ -83,6 +97,13 @@ const Home: NextPage = () => {
 			</main>
 		</>
 	);
+};
+
+Home.getInitialProps = async () => {
+	const res = await fetchApi('/homepage', { populate: '*' });
+
+	const data = res.data.attributes;
+	return data;
 };
 
 export default Home;

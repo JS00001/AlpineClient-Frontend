@@ -1,61 +1,26 @@
+import qs from 'qs';
 import axios from 'axios';
 
-// Test
-const baseUrl =
-	process.env.NODE_ENV == 'development'
-		? 'http://localhost:3008/v2'
-		: 'https://api.alpineclientprod.com/v2';
+const BASE_URL = 'https://content.in-staging.space';
 
-export default {
-	baseUrl,
-	user: async () => {
-		const res = await axios.get(`${baseUrl}/me`, {
-			headers: {
-				Authorization: `${window.localStorage.getItem('token')}`,
-			},
-		});
+export const getStrapiUrl = (path: string) => `${BASE_URL}${path}`;
 
-		return res.data;
-	},
-	login: async (code: string) => {
-		const res = await axios.get(`${baseUrl}/auth?code=${code}`);
-		window.localStorage.setItem('token', res.data.token);
+export const fetchApi = async (path: string, urlParams: any = {}, options: any = {}) => {
+	const mergedOptions = {
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		...options,
+	};
 
-		return res.data;
-	},
-	changelogs: async () => {
-		const res = await axios.get(`${baseUrl}/changelog`);
+	const queryString = qs.stringify(urlParams);
+	const url = `${getStrapiUrl(`/api${path}`)}${queryString ? `?${queryString}` : ''}`;
 
-		return res.data;
-	},
-	addChangelog: async (changelog: Changelog) => {
-		const res = await axios.post(`${baseUrl}/changelog`, changelog, {
-			headers: {
-				Authorization: `${window.localStorage.getItem('token')}`,
-			},
-		});
+	const response = await axios.get(url, mergedOptions);
 
-		return res.data;
-	},
-	deleteChangelog: async (id: string) => {
-		const res = await axios.delete(`${baseUrl}/changelog?id=${id}`, {
-			headers: {
-				Authorization: `${window.localStorage.getItem('token')}`,
-			},
-		});
+	return response.data;
+};
 
-		return res.data;
-	},
-	upload: async (image: File) => {
-		const formData = new FormData();
-		formData.append('image', image);
-		const res = await axios.post(`${baseUrl}/upload`, formData, {
-			headers: {
-				Authorization: `${window.localStorage.getItem('token')}`,
-				'Content-Type': 'multipart/form-data',
-			},
-		});
-
-		return res.data;
-	},
+export const getFileUrl = (file: File) => {
+	return `${getStrapiUrl(file.data.attributes.url)}`;
 };

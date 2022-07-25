@@ -39,7 +39,7 @@ const Markdown: React.FC<MarkdownProps> = ({ children }) => {
 				h3: (props: any) => <h3 {...props} className='text-xl font-medium' />,
 				h4: (props: any) => <h4 {...props} className='text-lg font-normal' />,
 			}}
-			className='w-full p-6 text-secondary-100'
+			className='w-full text-secondary-100'
 		>
 			{children}
 		</ReactMarkdown>
