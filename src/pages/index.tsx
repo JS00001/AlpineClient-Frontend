@@ -29,7 +29,7 @@ const Home: NextPage<HomepageFiles> = ({ windows_download_file, mac_download_fil
 				<title>Alpine Client</title>
 			</Head>
 
-			<nav className='relative z-50 bg-green-500'>
+			<nav className='relative z-50 bg-pink-500'>
 				<Navbar />
 			</nav>
 
