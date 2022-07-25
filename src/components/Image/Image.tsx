@@ -5,7 +5,11 @@ export type ImageProps = React.HTMLAttributes<HTMLImageElement> & {
 };
 
 const Image: React.FC<ImageProps> = ({ src, className = '', ...props }) => {
-	return <img src={src} className={`h-full w-full ${className} rounded-md`} {...props} />;
+	return (
+		<>
+			<img src={src} className={`h-full w-full ${className} rounded-md`} {...props} />
+		</>
+	);
 };
 
 export default Image;

@@ -16,9 +16,11 @@ const Navbar: React.FC = () => {
 			<div className='container mx-auto py-8 px-2 md:px-5 lg:px-20'>
 				<div className='flex flex-col md:flex-row md:items-center md:justify-between'>
 					<div className='flex items-center justify-between px-6'>
-						<Link href='/'>
-							<img src='/logo.png' className='cursor-pointer' />
-						</Link>
+						<div className='w-20'>
+							<Link href='/'>
+								<img src='/logo.png' className='cursor-pointer' />
+							</Link>
+						</div>
 						<RiMenuFill color='#fff' size={32} className='md:hidden' onClick={onToggleCollapsed} />
 					</div>
 					<div className={`mt-5 flex flex-col ${collapsed && 'hidden'} md:flex md:flex-row `}>

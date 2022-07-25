@@ -1,5 +1,4 @@
 import React from 'react';
-import Router from 'next/router';
 
 export interface RedirectProps {
 	href: string;
@@ -7,7 +6,9 @@ export interface RedirectProps {
 
 const Redirect: React.FC<RedirectProps> = ({ href }) => {
 	React.useEffect(() => {
-		Router.push(href);
+		if (typeof window !== 'undefined') {
+			window.location.href = href;
+		}
 	});
 
 	return null;
