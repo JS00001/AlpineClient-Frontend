@@ -1,9 +1,9 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
 
 import { fetchApi, getFileUrl } from '@/api';
 
+import Hero from '@/components/Changelog/Hero';
 import Image from '@/components/Shared/Image';
 import Navbar from '@/components/Shared/Navbar';
 import Container from '@/components/Shared/Container';
@@ -17,14 +17,7 @@ const Changelog: NextPage<Changelogs> = ({ changelogs }) => {
 			<Background.LandingBackground />
 
 			<main className='relative z-50'>
-				<Container className='my-32 text-center md:text-left'>
-					<h1 className='text-[64px] font-extrabold text-white md:text-[96px] lg:text-[128px]'>
-						Changelog
-					</h1>
-					<h2 className='mt-5 uppercase text-gray-300 md:text-[18px] lg:text-[24px]'>
-						View the Recent Changes to Alpine
-					</h2>
-				</Container>
+				<Hero />
 
 				<Container className=' px-5'>
 					{changelogs.length > 0 && (

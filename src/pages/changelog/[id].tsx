@@ -13,17 +13,8 @@ import Markdown from '@/components/Shared/Markdown';
 const Changelog: NextPage<Changelog> = ({ title, description, thumbnail, sections }) => {
 	return (
 		<>
-			<Head>
-				<title>Alpine Client</title>
-			</Head>
-
-			<nav className='relative z-50'>
-				<Navbar />
-			</nav>
-
-			<figure>
-				<Background.LoginBackground />
-			</figure>
+			<Navbar />
+			<Background.LoginBackground />
 
 			<main className='relative z-50'>
 				<Container className='mt-32 text-center md:text-left'>
