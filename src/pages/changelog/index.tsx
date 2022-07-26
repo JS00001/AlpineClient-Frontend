@@ -4,10 +4,10 @@ import Link from 'next/link';
 
 import { fetchApi, getFileUrl } from '@/api';
 
-import Image from '@/components/Image';
-import Navbar from '@/components/Navbar';
-import Container from '@/components/Container';
-import Background from '@/components/Background';
+import Image from '@/components/Shared/Image';
+import Navbar from '@/components/Shared/Navbar';
+import Container from '@/components/Shared/Container';
+import Background from '@/components/Shared/Background';
 
 const Changelog: NextPage<Changelogs> = ({ changelogs }) => {
 	return (

@@ -1,4 +1,4 @@
-import Container from '@/components/Container';
+import Container from '@/components/Shared/Container';
 
 const ChangelogSkeleton: React.FC = () => {
 	return (

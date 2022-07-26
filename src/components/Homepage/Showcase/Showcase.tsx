@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Content from '@/content';
-import Image from '@/components/Image';
+import Image from '@/components/Shared/Image';
 
 const Showcase: React.FC = () => {
 	const [active, setActive] = React.useState(0);

@@ -4,13 +4,13 @@ import Head from 'next/head';
 import { fetchApi, getFileUrl } from '@/api';
 
 import Content from '@/content';
-import Faq from '@/components/Faq';
-import Navbar from '@/components/Navbar';
-import Button from '@/components/Button';
-import Feature from '@/components/Feature';
-import Showcase from '@/components/Showcase';
-import Container from '@/components/Container';
-import Background from '@/components/Background';
+import Faq from '@/components/Homepage/Faq';
+import Navbar from '@/components/Shared//Navbar';
+import Button from '@/components/Shared/Button';
+import Feature from '@/components/Homepage/Feature';
+import Showcase from '@/components/Homepage/Showcase';
+import Container from '@/components/Shared/Container';
+import Background from '@/components/Shared/Background';
 
 const Home: NextPage<HomepageFiles> = ({ windows_download_file, mac_download_file }) => {
 	const downloadWindows = () => {
