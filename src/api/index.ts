@@ -3,7 +3,11 @@ import axios from 'axios';
 
 const BASE_URL = 'https://content.in-staging.space';
 
+// Take the base url, and return the url with the passed path
 export const getStrapiUrl = (path: string) => `${BASE_URL}${path}`;
+
+// Take a subdirectory and return the full url
+export const getFileUrl = (file: File) => `${getStrapiUrl(file.data.attributes.url)}`;
 
 export const fetchApi = async (path: string, urlParams: any = {}, options: any = {}) => {
 	const mergedOptions = {
@@ -19,8 +23,4 @@ export const fetchApi = async (path: string, urlParams: any = {}, options: any =
 	const response = await axios.get(url, mergedOptions);
 
 	return response.data;
-};
-
-export const getFileUrl = (file: File) => {
-	return `${getStrapiUrl(file.data.attributes.url)}`;
 };

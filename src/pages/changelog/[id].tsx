@@ -2,28 +2,19 @@ import Head from 'next/head';
 
 import { fetchApi, getFileUrl, getStrapiUrl } from '@/api';
 
-import Navbar from '@/components/Navbar';
-import Container from '@/components/Container';
-import Background from '@/components/Background';
+import Navbar from '@/components/Shared/Navbar';
+import Container from '@/components/Shared/Container';
+import Background from '@/components/Shared/Background';
 
 import { NextPage } from 'next';
-import Image from '@/components/Image';
-import Markdown from '@/components/Markdown';
+import Image from '@/components/Shared/Image';
+import Markdown from '@/components/Shared/Markdown';
 
 const Changelog: NextPage<Changelog> = ({ title, description, thumbnail, sections }) => {
 	return (
 		<>
-			<Head>
-				<title>Alpine Client</title>
-			</Head>
-
-			<nav className='relative z-50'>
-				<Navbar />
-			</nav>
-
-			<figure>
-				<Background.LoginBackground />
-			</figure>
+			<Navbar />
+			<Background.LoginBackground />
 
 			<main className='relative z-50'>
 				<Container className='mt-32 text-center md:text-left'>
