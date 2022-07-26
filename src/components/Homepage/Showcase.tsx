@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Content from '@/content';
+import Container from '../Shared/Container';
 import Image from '@/components/Shared/Image';
 
 const Showcase: React.FC = () => {
@@ -11,7 +12,7 @@ const Showcase: React.FC = () => {
 	};
 
 	return (
-		<>
+		<Container>
 			<div className='flex flex-col items-center'>
 				<div className='hidden h-4 w-[600px] rounded-t-3xl bg-secondary-400 md:flex ' />
 				<div className='relative flex w-full justify-center bg-secondary-400 pb-3 pt-3 text-white md:w-[700px] md:pt-0'>
@@ -33,7 +34,7 @@ const Showcase: React.FC = () => {
 					<Image src={Content.Showcase[active].image} />
 				</div>
 			</div>
-		</>
+		</Container>
 	);
 };
 

@@ -1,14 +1,15 @@
 import '../styles/globals.css';
+import Head from 'next/head';
 import type { AppProps } from 'next/app';
-import { QueryClient, QueryClientProvider } from 'react-query';
-
-const client = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
-		<QueryClientProvider client={client}>
+		<>
+			<Head>
+				<title>Alpine Client</title>
+			</Head>
 			<Component {...pageProps} />
-		</QueryClientProvider>
+		</>
 	);
 }
 

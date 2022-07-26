@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
 	};
 
 	return (
-		<>
+		<nav className='relative z-50'>
 			<div className='container mx-auto py-8 px-2 md:px-5 lg:px-20'>
 				<div className='flex flex-col md:flex-row md:items-center md:justify-between'>
 					<div className='flex items-center justify-between px-6'>
@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
 					</div>
 				</div>
 			</div>
-		</>
+		</nav>
 	);
 };
 

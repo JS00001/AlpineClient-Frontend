@@ -12,17 +12,9 @@ import Background from '@/components/Shared/Background';
 const Changelog: NextPage<Changelogs> = ({ changelogs }) => {
 	return (
 		<>
-			<Head>
-				<title>Alpine Client</title>
-			</Head>
+			<Navbar />
 
-			<nav className='relative z-50'>
-				<Navbar />
-			</nav>
-
-			<figure>
-				<Background.LandingBackground />
-			</figure>
+			<Background.LandingBackground />
 
 			<main className='relative z-50'>
 				<Container className='my-32 text-center md:text-left'>
