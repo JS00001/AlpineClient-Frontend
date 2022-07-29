@@ -6,7 +6,7 @@ import Navbar from '@/components/Shared/Navbar';
 import Container from '@/components/Shared/Container';
 import Background from '@/components/Shared/Background';
 
-import { NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Image from '@/components/Shared/Image';
 import Markdown from '@/components/Shared/Markdown';
 

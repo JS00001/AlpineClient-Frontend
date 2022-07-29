@@ -60,13 +60,17 @@ const Changelog: NextPage<Changelogs> = ({ changelogs }) => {
 	);
 };
 
-Changelog.getInitialProps = async () => {
+export const getStaticProps = async () => {
 	const res = await fetchApi('/changelog', {
 		populate: ['changelogs.sections', 'changelogs.thumbnail'],
 	});
 	const data = res.data.attributes;
 
-	return data;
+	return {
+		props: {
+			changelogs: data.changelogs,
+		},
+	};
 };
 
 export default Changelog;
