@@ -20,14 +20,16 @@ interface ChangelogSection {
 }
 
 interface Changelog {
-	title: string;
-	description: string;
-	thumbnail: File;
-	sections: ChangelogSection[];
-}
-
-interface Changelogs {
-	changelogs: Changelog[];
+	id: number;
+	attributes: {
+		title: string;
+		description: string;
+		createdAt: string;
+		updatedAt: string;
+		publishedAt: string;
+		thumbnail: File;
+		sections: ChangelogSection[];
+	};
 }
 
 interface HomepageFiles {
