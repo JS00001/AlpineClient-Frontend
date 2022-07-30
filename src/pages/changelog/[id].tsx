@@ -1,16 +1,21 @@
-import Head from 'next/head';
-
 import { fetchApi, getFileUrl, getStrapiUrl } from '@/api';
 
 import Navbar from '@/components/Shared/Navbar';
 import Container from '@/components/Shared/Container';
 import Background from '@/components/Shared/Background';
 
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { GetServerSideProps, GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Image from '@/components/Shared/Image';
 import Markdown from '@/components/Shared/Markdown';
+import { ParsedUrlQuery } from 'querystring';
 
-const Changelog: NextPage<Changelog> = ({ title, description, thumbnail, sections }) => {
+interface IParams extends ParsedUrlQuery {
+	id: string;
+}
+
+const Changelog: NextPage<Changelog> = ({
+	attributes: { title, description, thumbnail, sections },
+}) => {
 	return (
 		<>
 			<Navbar />
@@ -46,24 +51,23 @@ const Changelog: NextPage<Changelog> = ({ title, description, thumbnail, section
 	);
 };
 
-Changelog.getInitialProps = async (ctx) => {
-	const { id } = ctx.query;
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+	const { id } = ctx.params as IParams;
 
-	const res = await fetchApi('/changelog', {
-		populate: ['changelogs.sections', 'changelogs.thumbnail'],
+	const res = await fetchApi(`/changelogs/${id}`, {
+		populate: '*',
 	});
-	const data = res.data.attributes;
 
-	const changelog = data.changelogs[id as string];
+	const data: Changelog = res.data;
 
 	// replace all of changelog.sections.details images with actual image urls
-	changelog.sections.forEach((section: ChangelogSection) => {
+	data.attributes.sections.forEach((section: ChangelogSection) => {
 		section.details = section.details.replace(/!\[(.*?)\]\((.*?)\)/g, (match, p1, p2) => {
 			return `![${p1}](${getStrapiUrl(p2)})`;
 		});
 	});
 
-	return changelog;
+	return { props: data };
 };
 
 export default Changelog;
