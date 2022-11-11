@@ -1,5 +1,6 @@
 import Container from '../Shared/Container';
 
+// Comment 
 const Hero: React.FC = () => {
 	return (
 		<Container className='my-32 text-center md:text-left'>
