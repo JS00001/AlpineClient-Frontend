@@ -1,7 +1,7 @@
 import qs from 'qs';
 import axios from 'axios';
 
-const BASE_URL = 'https://content.in-staging.space';
+const BASE_URL = 'https://panel.alpineclient.com';
 
 // Take the base url, and return the url with the passed path
 export const getStrapiUrl = (path: string) => `${BASE_URL}${path}`;
